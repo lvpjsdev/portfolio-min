@@ -1,0 +1,18 @@
+{
+  "color": {
+    "interactive": {
+      "primary": { "$type": "color", "$value": "{color.primitive.tiger-flame}" },
+      "secondary": { "$type": "color", "$value": "{color.primitive.dusty-denim}" }
+    }
+  },
+  "spacing": {
+    "component": {
+      "padding": { "$type": "dimension", "$value": "{spacing.lg}" },
+      "gap": { "$type": "dimension", "$value": "{spacing.md}" }
+    }
+  },
+  "borderRadius": {
+    "button": { "$type": "dimension", "$value": "{borderRadius.lg}" },
+    "card": { "$type": "dimension", "$value": "{borderRadius.xl}" }
+  }
+}

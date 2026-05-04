@@ -16,16 +16,12 @@
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
-    "@tailwindcss/postcss": "^4.2.4",
     "astro": "^6.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@terrazzo/cli": "^2.1.0",
     "@terrazzo/plugin-css": "^2.1.0",
-    "autoprefixer": "^10.5.0",
-    "eslint": "^10.3.0",
-    "postcss": "^8.5.14",
-    "tailwindcss": "^4.2.4"
+    "eslint": "^10.3.0"
   }
 }
