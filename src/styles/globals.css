@@ -1,0 +1,44 @@
+/* Global styles using design tokens */
+
+body {
+  transition: background-color var(--duration-normal), color var(--duration-normal);
+}
+
+/* Utility classes */
+.bg-page {
+  background-color: var(--color-background-page);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+/* Spacing utilities */
+.p-md {
+  padding: var(--spacing-md);
+}
+
+.p-lg {
+  padding: var(--spacing-lg);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+/* Border radius */
+.rounded-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+.rounded-xl {
+  border-radius: var(--border-radius-xl);
+}
+
+.rounded-full {
+  border-radius: var(--border-radius-full);
+}

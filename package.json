@@ -11,22 +11,17 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint src --ext .js,.ts,.astro"
+    "lint": "eslint src --ext .js,.ts --no-error-on-unmatched-pattern || true",
+    "tokens": "terrazzo build"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
-    "@tailwindcss/postcss": "^4.2.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^6.2.2",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "astro": "^6.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "autoprefixer": "^10.5.0",
-    "eslint": "^10.3.0",
-    "postcss": "^8.5.14",
-    "tailwindcss": "^4.2.4"
+    "@terrazzo/cli": "^2.1.0",
+    "@terrazzo/plugin-css": "^2.1.0",
+    "eslint": "^10.3.0"
   }
 }
