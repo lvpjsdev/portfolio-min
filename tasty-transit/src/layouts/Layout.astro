@@ -1,3 +1,8 @@
+---
+import '../styles/globals.css';
+import AnimatedBackground from '../components/AnimatedBackground.astro';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -10,6 +15,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		<AnimatedBackground />
 		<slot />
 	</body>
 </html>
@@ -22,7 +28,3 @@
 		height: 100%;
 	}
 </style>
-
----
-import '../styles/globals.css';
----
