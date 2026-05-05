@@ -1,0 +1,64 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  cursor: default;
+  user-select: none;
+}
+
+.bracketLeft,
+.bracketRight {
+  color: #f46036; /* tiger-flame */
+  transition: transform 0.2s ease;
+}
+
+.initials {
+  margin: 0 0.1em;
+  background: linear-gradient(90deg, #5b85aa, #414770);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.initials.hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(244, 96, 54, 0.4));
+}
+
+.bracketLeft {
+  transform-origin: right center;
+}
+
+.bracketRight {
+  transform-origin: left center;
+}
+
+.container:hover .bracketLeft {
+  transform: translateX(-2px);
+}
+
+.container:hover .bracketRight {
+  transform: translateX(2px);
+}
+
+.cursor {
+  color: #f46036;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  opacity: 0;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.container:hover .cursor {
+  opacity: 1;
+  animation: blink 0.8s step-end infinite;
+}

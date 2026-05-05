@@ -1,0 +1,35 @@
+{
+  "name": "Leonid Petrov - Frontend Developer Portfolio",
+  "short_name": "LeonidPetrov",
+  "description": "Portfolio of Leonid Petrov, Senior/Middle Frontend Engineer specializing in React, TypeScript, Next.js",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171123",
+  "theme_color": "#f46036",
+  "icons": [
+    {
+      "src": "/favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-48x48.svg",
+      "sizes": "48x48",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "apple touch icon"
+    }
+  ]
+}

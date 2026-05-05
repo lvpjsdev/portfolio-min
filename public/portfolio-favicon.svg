@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Favicon: Code brackets <L> with accent color -->
+  <rect width="32" height="32" rx="6" fill="#171123"/>
+  <!-- Left bracket < -->
+  <path d="M10 8 L6 16 L10 24" stroke="#f46036" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Letter L (Leonid) -->
+  <path d="M14 8 V24" stroke="#5b85aa" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M14 24 H22" stroke="#5b85aa" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Right bracket > -->
+  <path d="M22 8 L26 16 L22 24" stroke="#f46036" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
