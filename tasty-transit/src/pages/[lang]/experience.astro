@@ -1,5 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations, getStaticPathsForLocale } from '../../i18n/translations';
+
+export function getStaticPaths() {
+  return getStaticPathsForLocale();
+}
+
+const { lang } = Astro.params;
+const t = await getTranslations(lang as 'en' | 'ru');
 ---
 
 <Layout>

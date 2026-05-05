@@ -1,5 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations, getStaticPathsForLocale } from '../../i18n/translations';
+
+export function getStaticPaths() {
+  return getStaticPathsForLocale();
+}
+
+const { lang } = Astro.params;
+const t = await getTranslations(lang as 'en' | 'ru');
 ---
 
 <Layout>
@@ -18,10 +26,10 @@ import Layout from '../layouts/Layout.astro';
 		<main class="flex-1 flex items-center justify-center pl-16">
 			<div class="text-center">
 				<h1 class="text-6xl md:text-8xl font-bold mb-4 text-white animate-fade-in-up">
-					Hej.
+					{t.home.greeting}
 				</h1>
 				<h2 class="text-xl text-dusty-denim animate-fade-in-up">
-					My name is Developer. I'm a Web Developer, based in Location.
+					{t.home.intro}
 				</h2>
 			</div>
 		</main>
