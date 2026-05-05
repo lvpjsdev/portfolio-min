@@ -4,6 +4,14 @@ body {
   transition: background-color var(--duration-normal), color var(--duration-normal);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}
+
 /* Utility classes */
 .bg-page {
   background-color: var(--color-background-page);

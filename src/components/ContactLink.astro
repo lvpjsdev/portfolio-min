@@ -55,20 +55,42 @@ const isExternal = type !== 'email';
 </a>
 
 <style>
-  .contact-link {
+.contact-link {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 20px 24px;
+    padding: var(--spacing-16-20);
     border-radius: var(--border-radius-lg);
     background: var(--color-background-surface);
     text-decoration: none;
     color: var(--color-text-primary);
-    transition: transform var(--duration-normal) ease;
+    width: 320px;
+    transition: transform var(--duration-normal) ease, box-shadow var(--duration-normal) ease;
+    position: relative;
+    overflow: hidden;
+    /* Depth: multiple shadow layers */
+    box-shadow:
+      0 2px 8px rgba(244, 96, 54, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
   }
 
   .contact-link:hover {
     transform: translateY(-2px);
+    box-shadow:
+      0 4px 12px rgba(244, 96, 54, 0.1),
+      0 8px 24px rgba(0, 0, 0, 0.15);
   }
 
   .contact-icon {
@@ -82,7 +104,7 @@ const isExternal = type !== 'email';
   }
 
   .contact-label {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-text-primary);
   }
 </style>

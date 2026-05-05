@@ -1,0 +1,28 @@
+---
+import SkillTag from './SkillTag.astro';
+import SkillIcon from './SkillIcon.astro';
+import { skillLinks } from '../lib/skillLinks';
+
+interface Props {
+  technologies: string[];
+}
+
+const { technologies } = Astro.props;
+
+const tags = technologies.map((tech) => ({
+  tech,
+  href: skillLinks[tech],
+}));
+---
+
+{tags.map(({ tech, href }) =>
+  href ? (
+    <SkillTag label={tech} href={href}>
+      <SkillIcon name={tech} slot="icon" />
+    </SkillTag>
+  ) : (
+    <SkillTag label={tech}>
+      <SkillIcon name={tech} slot="icon" />
+    </SkillTag>
+  )
+)}

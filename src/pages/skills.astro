@@ -1,41 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SkillTag from '../components/SkillTag.astro';
+import TechTags from '../components/TechTags.astro';
 
 interface SkillCategory {
   name: string;
-  skills: Array<{ label: string; accent?: boolean }>;
+  skills: string[];
 }
 
 const skillCategories: SkillCategory[] = [
   {
     name: 'Web Technologies',
-    skills: [
-      { label: 'TypeScript', accent: true },
-      { label: 'React', accent: true },
-      { label: 'Astro' },
-      { label: 'HTML5' },
-      { label: 'CSS3' },
-    ],
+    skills: ['TypeScript', 'React', 'Astro', 'HTML', 'CSS'],
   },
   {
     name: 'Backend & Tools',
-    skills: [
-      { label: 'Node.js' },
-      { label: 'PostgreSQL' },
-      { label: 'Git' },
-      { label: 'Docker' },
-    ],
+    skills: ['Node.js', 'PostgreSQL', 'Git'],
   },
   {
     name: 'Design',
-    skills: [
-      { label: 'Figma' },
-      { label: 'Design Systems' },
-      { label: 'CSS Tokens' },
-    ],
+    skills: ['Figma', 'Design Systems', 'CSS Tokens'],
   },
 ];
+---
 ---
 
 <Layout currentPage="skills" title="Portfolio — Skills">
@@ -49,9 +35,7 @@ const skillCategories: SkillCategory[] = [
         <div class="category">
           <h2 class="category-title">{category.name}</h2>
           <div class="tags-list">
-            {category.skills.map((skill) => (
-              <SkillTag label={skill.label} accent={skill.accent} />
-            ))}
+            <TechTags technologies={category.skills} />
           </div>
         </div>
       ))}
@@ -61,44 +45,45 @@ const skillCategories: SkillCategory[] = [
 
 <style>
   .page-section {
-    padding: 4rem 3rem;
+    padding: 60px 80px;
     max-width: 800px;
   }
 
   .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-xl);
   }
 
   .section-title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.1;
   }
 
   .section-divider {
     height: 3px;
     width: 48px;
     background-color: var(--color-interactive-primary);
-    border-radius: var(--border-radius-full);
+    border-radius: var(--border-radius-sm);
   }
 
   .categories-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--spacing-lg);
   }
 
   .category-title {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 var(--spacing-sm) 0;
   }
 
   .tags-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: var(--spacing-sm);
   }
 </style>

@@ -2,35 +2,69 @@
 interface Props {
   label: string;
   accent?: boolean;
+  href?: string;
 }
 
-const { label, accent = false } = Astro.props;
+const { label, accent = false, href } = Astro.props;
 ---
 
-<span class:list={['skill-tag', { 'skill-tag--accent': accent }]}>
-  {label}
-</span>
+{href ? (
+  <a href={href} class:list={['skill-tag', 'skill-tag--link', { 'skill-tag--accent': accent }]} target="_blank" rel="noopener noreferrer" aria-label={`${label} documentation (external link)`}>
+    <slot name="icon" />
+    <span class="skill-tag__text">{label}</span>
+  </a>
+) : (
+  <span class:list={['skill-tag', { 'skill-tag--accent': accent }]}>
+    <slot name="icon" />
+    <span class="skill-tag__text">{label}</span>
+  </span>
+)}
 
 <style>
   .skill-tag {
     display: inline-flex;
     align-items: center;
+    gap: 6px;
     padding: 6px 12px;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-tag);
     background-color: var(--color-primitive-twilight-indigo);
     color: var(--color-primitive-white);
     font-size: var(--font-size-xs);
     line-height: 1;
     white-space: nowrap;
-    transition: opacity var(--duration-fast) ease;
-    cursor: default;
+    text-decoration: none;
+    transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+    /* Depth: subtle shadow for brutalism feel */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   }
 
-  .skill-tag:hover {
-    opacity: 0.8;
+  .skill-tag--link {
+    cursor: pointer;
   }
 
   .skill-tag--accent {
     background-color: var(--color-interactive-primary);
+    box-shadow: 0 2px 6px rgba(244, 96, 54, 0.2);
+  }
+
+  .skill-tag:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .skill-tag__text {
+    display: inline-block;
+  }
+
+  .skill-tag__icon {
+    flex-shrink: 0;
+  }
+
+  .skill-tag__icon,
+  .skill-tag__icon svg {
+    color: var(--color-interactive-primary);
+    fill: none;
+    stroke: currentColor;
   }
 </style>
