@@ -10,7 +10,7 @@ const { startPOI = 'index' } = Astro.props;
 <canvas id="castle-canvas" class="castle-canvas"></canvas>
 
 <script>
-  import { initCanvas, initTheme, setViewport, checkPerformance, isLowPerf } from '../scripts/castle-engine.js';
+  import { initCanvas, initTheme, setViewport, checkPerformance, isLowPerf, addPOIClickHandler } from '../scripts/castle-engine.js';
   import { pointsOfInterest } from '../data/points-of-interest.js';
   
   // Initialize
@@ -18,6 +18,7 @@ const { startPOI = 'index' } = Astro.props;
   checkPerformance();
   initTheme();
   initCanvas(canvas);
+  addPOIClickHandler(canvas);
   
   // Set initial viewport based on current page
   const currentPOI = pointsOfInterest.find(p => p.id === '${startPOI}') || pointsOfInterest[0];

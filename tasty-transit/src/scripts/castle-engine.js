@@ -229,3 +229,48 @@ export function stopDemo() {
 export function isDemoRunning() {
   return demoInterval !== null;
 }
+
+// Hit areas for secret POI
+export function addPOIClickHandler(canvasElement) {
+  canvasElement.addEventListener('click', (e) => {
+    const rect = canvasElement.getBoundingClientRect();
+    const clickX = (e.clientX - rect.left) / rect.width;
+    const clickY = (e.clientY - rect.top) / rect.height;
+    
+    // Convert screen coordinates to castle image coordinates
+    const vp = getViewport();
+    const imgX = vp.x + (clickX - 0.5) / vp.zoom;
+    const imgY = vp.y + (clickY - 0.5) / vp.zoom;
+    
+    // Check if click is near any bonus POI
+    import('../data/points-of-interest.js').then(({ pointsOfInterest }) => {
+      pointsOfInterest.forEach(poi => {
+        if (poi.bonus && Math.abs(poi.x - imgX) < 0.05 && Math.abs(poi.y - imgY) < 0.05) {
+          // Navigate to secret page or open modal
+          window.location.href = `/${poi.id}`;
+        }
+      });
+    });
+  });
+  
+  // Add hover cursor change
+  canvasElement.addEventListener('mousemove', (e) => {
+    const rect = canvasElement.getBoundingClientRect();
+    const hoverX = (e.clientX - rect.left) / rect.width;
+    const hoverY = (e.clientY - rect.top) / rect.height;
+    
+    const vp = getViewport();
+    const imgX = vp.x + (hoverX - 0.5) / vp.zoom;
+    const imgY = vp.y + (hoverY - 0.5) / vp.zoom;
+    
+    let isOverPOI = false;
+    import('../data/points-of-interest.js').then(({ pointsOfInterest }) => {
+      pointsOfInterest.forEach(poi => {
+        if (poi.bonus && Math.abs(poi.x - imgX) < 0.05 && Math.abs(poi.y - imgY) < 0.05) {
+          isOverPOI = true;
+        }
+      });
+      canvasElement.style.cursor = isOverPOI ? 'pointer' : 'default';
+    });
+  });
+}
