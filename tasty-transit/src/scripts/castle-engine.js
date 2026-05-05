@@ -123,6 +123,12 @@ let canvas, ctx;
 let castleDayImg, castleNightImg, starsImg;
 let imagesLoaded = false;
 
+function showFallbackBackground() {
+  if (!ctx) return;
+  ctx.fillStyle = getTheme() === 'day' ? '#87CEEB' : '#191970';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
 export function initCanvas(canvasElement) {
   if (!canvasElement || !canvasElement.getContext) {
     console.warn('Canvas not supported, falling back to static background');
@@ -134,12 +140,24 @@ export function initCanvas(canvasElement) {
   ctx = canvas.getContext('2d');
   
   castleDayImg = new Image();
+  castleDayImg.onerror = () => {
+    console.error('Failed to load castle-day.png');
+    showFallbackBackground();
+  };
   castleDayImg.src = '/src/assets/castle/castle-day.png';
   
   castleNightImg = new Image();
+  castleNightImg.onerror = () => {
+    console.error('Failed to load castle-night.png');
+    showFallbackBackground();
+  };
   castleNightImg.src = '/src/assets/castle/castle-night.png';
   
   starsImg = new Image();
+  starsImg.onerror = () => {
+    console.error('Failed to load stars-overlay.png');
+    // Non-critical, just log
+  };
   starsImg.src = '/src/assets/castle/stars-overlay.png';
   
   let loaded = 0;
@@ -196,10 +214,7 @@ function render() {
     }
   } catch (err) {
     console.error('Render error:', err);
-    if (ctx) {
-      ctx.fillStyle = getTheme() === 'day' ? '#87CEEB' : '#191970';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    showFallbackBackground();
   }
   
   requestAnimationFrame(render);
