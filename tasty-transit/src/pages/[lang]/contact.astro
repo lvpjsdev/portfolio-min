@@ -14,15 +14,16 @@ const t = await getTranslations(lang as 'en' | 'ru');
 	<div class="flex min-h-screen">
 		<nav class="fixed left-0 top-0 h-full w-16 bg-dark-amethyst flex flex-col items-center justify-center z-50">
 			<div class="space-y-6">
-				<a href={`/${lang}/`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Home"></a>
-				<a href={`/${lang}/about`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="About"></a>
-				<a href={`/${lang}/experience`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Experience"></a>
-				<a href={`/${lang}/projects`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Projects"></a>
-				<a href={`/${lang}/skills`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Skills"></a>
-				<a href={`/${lang}/contact`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Contact"></a>
+				<a href={`/${lang}/`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title={t.nav.home}></a>
+				<a href={`/${lang}/about`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title={t.nav.about}></a>
+				<a href={`/${lang}/experience`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title={t.nav.experience}></a>
+				<a href={`/${lang}/projects`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title={t.nav.projects}></a>
+				<a href={`/${lang}/skills`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title={t.nav.skills}></a>
+				<a href={`/${lang}/contact`} class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title={t.nav.contact}></a>
 			</div>
 		</nav>
 		
+		{/* TODO: move page content to translation files (en.json, ru.json) for full i18n support */}
 		<main class="flex-1 pl-16 py-16 pr-8">
 			<h1 class="text-4xl font-bold mb-8 text-white">{t.contact.title}</h1>
 			<div class="space-y-4">
