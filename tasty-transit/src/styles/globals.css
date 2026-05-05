@@ -4,7 +4,9 @@
 
 @layer base {
   body {
-    @apply bg-midnight-violet text-dusty-denim font-sans;
+    background-color: #171123;
+    color: #5b85aa;
+    font-family: 'Ubuntu', sans-serif;
   }
 }
 

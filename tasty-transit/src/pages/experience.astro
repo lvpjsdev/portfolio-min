@@ -5,20 +5,16 @@ import { getCollection } from 'astro:content';
 const pages = await getCollection('pages');
 const expPage = pages.find(p => p.id === 'experience.md');
 
-let Content;
-if (!expPage) {
-  Content = () => <p class="text-dusty-denim">Content is being updated</p>;
-} else {
-  const { Content: RenderedContent } = await expPage.render();
-  Content = RenderedContent;
-}
+const { Content } = expPage 
+  ? await expPage.render() 
+  : { Content: null };
 ---
 
 <Layout title="Experience">
   <div class="py-16 pr-8 pl-8">
     <h1 class="text-4xl font-bold mb-8 text-white">{expPage?.data.title || 'Work Experience'}</h1>
     <div class="space-y-8 text-dusty-denim">
-      <Content />
+      {Content ? <Content /> : <p class="text-dusty-denim">Content is being updated</p>}
     </div>
   </div>
 </Layout>

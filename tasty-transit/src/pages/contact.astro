@@ -5,20 +5,16 @@ import { getCollection } from 'astro:content';
 const pages = await getCollection('pages');
 const contactPage = pages.find(p => p.id === 'contact.md');
 
-let Content;
-if (!contactPage) {
-  Content = () => <p class="text-dusty-denim">Content is being updated</p>;
-} else {
-  const { Content: RenderedContent } = await contactPage.render();
-  Content = RenderedContent;
-}
+const { Content } = contactPage 
+  ? await contactPage.render() 
+  : { Content: null };
 ---
 
 <Layout title="Contact">
   <div class="py-16 pr-8 pl-8">
     <h1 class="text-4xl font-bold mb-8 text-white">{contactPage?.data.title || 'Contact'}</h1>
     <div class="space-y-4 text-dusty-denim">
-      <Content />
+      {Content ? <Content /> : <p class="text-dusty-denim">Content is being updated</p>}
     </div>
   </div>
 </Layout>
