@@ -9,15 +9,16 @@ const { active } = Astro.props;
 <span class:list={['nav-dot', { 'nav-dot--active': active }]} aria-hidden="true"></span>
 
 <style>
-  .nav-dot {
-    display: block;
-    width: 10px;
-    height: 10px;
-    flex-shrink: 0;
-    border-radius: var(--border-radius-full);
-    background-color: var(--color-primitive-tiger-flame);
-    transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease;
-  }
+.nav-dot {
+     display: block;
+     width: 10px;
+     height: 10px;
+     flex-shrink: 0;
+     border-radius: var(--border-radius-full);
+     background-color: var(--color-primitive-tiger-flame);
+     transform: rotate(-0.030175490354247825deg);
+     transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease;
+   }
 
   .nav-dot--active {
     background-color: var(--color-primitive-white);

@@ -53,20 +53,22 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
 </article>
 
 <style>
-  .experience-card {
-    --card-hover-bg: #4a2f5e;
+.experience-card {
+      --card-hover-bg: #4a2f5e;
 
-    display: flex;
-    flex-direction: column;
-    padding: 20px 24px;
-    border-radius: var(--border-radius-lg);
-    background-color: var(--color-background-surface);
-    cursor: pointer;
-    outline: none;
-    transition:
-      background-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
-  }
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 20px 24px;
+     border-radius: var(--border-radius-lg);
+     background-color: var(--color-background-surface);
+     cursor: pointer;
+     outline: none;
+     transform: rotate(-0.030175490354247825deg);
+     transition:
+       background-color var(--duration-fast) ease,
+       box-shadow var(--duration-fast) ease;
+   }
 
   .experience-card:hover,
   .experience-card:focus-visible {
@@ -82,21 +84,21 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
     color: var(--color-interactive-primary);
   }
 
-  /* Header row */
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  }
+/* Header row */
+   .card-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: var(--spacing-6);
+   }
 
-  /* Info column */
-  .card-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 0;
-  }
+   /* Info column */
+   .card-info {
+     display: flex;
+     flex-direction: column;
+     gap: 4px;
+     min-width: 0;
+   }
 
   .card-role {
     font-size: var(--font-size-lg);
@@ -132,36 +134,41 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
       color var(--duration-fast) ease;
   }
 
-  /* Expanded state */
-  .experience-card.is-expanded .card-chevron {
-    transform: rotate(90deg);
-  }
+/* Expanded state */
+   .experience-card.is-expanded {
+     gap: 12px;
+     padding: 24px 28px;
+   }
 
-  /* Body / accordion panel */
-  .card-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height var(--duration-normal) ease;
-  }
+   .experience-card.is-expanded .card-chevron {
+     transform: rotate(90deg);
+   }
 
-  /* When hidden attribute is removed, allow height to grow */
-  .card-body:not([hidden]) {
-    max-height: 600px;
-  }
+/* Body / accordion panel */
+   .card-body {
+     overflow: hidden;
+     max-height: 0;
+     transition: max-height var(--duration-normal) ease;
+   }
 
-  /* Divider */
-  .card-divider {
-    border: none;
-    border-top: 1px solid var(--color-primitive-twilight-indigo);
-    margin: 16px 0;
-  }
+   /* When hidden attribute is removed, allow height to grow */
+   .card-body:not([hidden]) {
+     max-height: 600px;
+   }
 
-  /* Achievements */
-  .card-achievements {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+/* Divider */
+    .card-divider {
+      border: none;
+      border-top: 1px solid var(--color-primitive-twilight-indigo);
+      margin: var(--spacing-6) 0 var(--spacing-md) 0;
+    }
+
+/* Achievements */
+   .card-achievements {
+     display: flex;
+     flex-direction: column;
+     gap: var(--spacing-12);
+   }
 
   .achievements-title {
     font-size: var(--font-size-xs);

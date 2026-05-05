@@ -3,60 +3,66 @@
  * ------------------------------------------- */
 
 :root {
-  --border-radius-button: var(--border-radius-lg);
-  --border-radius-card: var(--border-radius-xl);
-  --border-radius-full: 9999px;
-  --border-radius-lg: 12px;
-  --border-radius-md: 8px;
-  --border-radius-none: 0;
-  --border-radius-sm: 4px;
-  --border-radius-xl: 16px;
-  --color-background-page: rgb(9% 7% 14%);
-  --color-background-surface: rgb(22% 13% 28%);
-  --color-interactive-primary: var(--color-primitive-tiger-flame);
-  --color-interactive-secondary: var(--color-primitive-dusty-denim);
-  /* Primary text color (light theme) */
-  --color-primitive-black: rgb(0% 0% 0%);
-  /* Surface color - cards, sidebar */
-  --color-primitive-dark-amethyst: rgb(22% 13% 28%);
-  /* Secondary accent - subtitles, secondary text */
-  --color-primitive-dusty-denim: rgb(36% 52% 67%);
-  /* Dark background - main page background */
-  --color-primitive-midnight-violet: rgb(9% 7% 14%);
-  /* Secondary text color - descriptions, labels */
-  --color-primitive-silver-mist: rgb(73% 74% 77%);
-  /* Primary accent - links, highlights, icons */
-  --color-primitive-tiger-flame: rgb(96% 38% 21%);
-  /* Tertiary - tags, buttons, dividers */
-  --color-primitive-twilight-indigo: rgb(25% 28% 44%);
-  /* Primary text color (dark theme) */
-  --color-primitive-white: rgb(100% 100% 100%);
-  --color-text-primary: rgb(100% 100% 100%);
-  --color-text-secondary: rgb(73% 74% 78%);
-  --duration-fast: 200ms;
-  --duration-normal: 300ms;
-  --duration-slow: 550ms;
-  --font-family-sans: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-  --font-size-2xl: 32px;
-  --font-size-3xl: 48px;
-  --font-size-7xl: 96px;
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-sm: 14px;
-  --font-size-xl: 20px;
-  --font-size-xs: 13px;
-  --font-weight-bold: 700;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --spacing-2xl: 64px;
-  --spacing-3xl: 80px;
-  --spacing-4xl: 96px;
-  --spacing-5xl: 128px;
-  --spacing-component-gap: var(--spacing-md);
-  --spacing-component-padding: var(--spacing-lg);
-  --spacing-lg: 24px;
-  --spacing-md: 16px;
-  --spacing-sm: 8px;
-  --spacing-xl: 40px;
-  --spacing-xs: 4px;
-}
+   --border-radius-button: var(--border-radius-lg);
+   --border-radius-card: var(--border-radius-xl);
+   --border-radius-full: 9999px;
+   --border-radius-lg: 12px;
+   --border-radius-md: 8px;
+   --border-radius-none: 0;
+   --border-radius-sm: 4px;
+   --border-radius-xl: 16px;
+   --border-radius-20: 20px;
+   --border-radius-tag: 6px;
+   --color-background-page: rgb(9% 7% 14%);
+   --color-background-surface: rgb(22% 13% 28%);
+   --color-interactive-primary: var(--color-primitive-tiger-flame);
+   --color-interactive-secondary: var(--color-primitive-dusty-denim);
+   /* Primary text color (light theme) */
+   --color-primitive-black: rgb(0% 0% 0%);
+   /* Surface color - cards, sidebar */
+   --color-primitive-dark-amethyst: rgb(22% 13% 28%);
+   /* Secondary accent - subtitles, secondary text */
+   --color-primitive-dusty-denim: rgb(36% 52% 67%);
+   /* Dark background - main page background */
+   --color-primitive-midnight-violet: rgb(9% 7% 14%);
+   /* Secondary text color - descriptions, labels */
+   --color-primitive-silver-mist: rgb(73% 74% 77%);
+   /* Primary accent - links, highlights, icons */
+   --color-primitive-tiger-flame: rgb(96% 38% 21%);
+   /* Tertiary - tags, buttons, dividers */
+   --color-primitive-twilight-indigo: rgb(25% 28% 44%);
+   /* Primary text color (dark theme) */
+   --color-primitive-white: rgb(100% 100% 100%);
+   --color-text-primary: rgb(100% 100% 100%);
+   --color-text-secondary: rgb(73% 74% 78%);
+   --duration-fast: 200ms;
+   --duration-normal: 300ms;
+   --duration-slow: 550ms;
+   --font-family-sans: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+   --font-size-2xl: 32px;
+   --font-size-3xl: 48px;
+   --font-size-7xl: 96px;
+   --font-size-base: 16px;
+   --font-size-lg: 18px;
+   --font-size-sm: 14px;
+   --font-size-xl: 20px;
+   --font-size-xs: 13px;
+   --font-weight-bold: 700;
+   --font-weight-medium: 500;
+   --font-weight-normal: 400;
+   --spacing-2xl: 64px;
+   --spacing-3xl: 80px;
+   --spacing-4xl: 96px;
+   --spacing-5xl: 128px;
+   --spacing-component-gap: var(--spacing-md);
+   --spacing-component-padding: var(--spacing-lg);
+   --spacing-lg: 24px;
+   --spacing-md: 16px;
+   --spacing-sm: 8px;
+   --spacing-xl: 40px;
+   --spacing-xs: 4px;
+   --spacing-6: 6px;
+   --spacing-12: 12px;
+   --spacing-16-20: 16px 20px;
+   --spacing-8-12: 8px 12px;
+ }

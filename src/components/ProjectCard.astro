@@ -110,21 +110,22 @@ const {
 </article>
 
 <style>
-  .project-card {
-    --card-hover-bg: #4a2f5e;
+.project-card {
+      --card-hover-bg: #4a2f5e;
 
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 20px 24px;
-    border-radius: var(--border-radius-lg);
-    background-color: var(--color-background-surface);
-    cursor: pointer;
-    outline: none;
-    transition:
-      background-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
-  }
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+     padding: 20px 24px;
+     border-radius: var(--border-radius-lg);
+     background-color: var(--color-background-surface);
+     cursor: pointer;
+     outline: none;
+     transform: rotate(-0.030175490354247825deg);
+     transition:
+       background-color var(--duration-fast) ease,
+       box-shadow var(--duration-fast) ease;
+   }
 
   .project-card:hover,
   .project-card:focus-visible {
@@ -148,13 +149,13 @@ const {
     gap: 16px;
   }
 
-  /* Info column */
-  .card-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 0;
-  }
+/* Info column */
+   .card-info {
+     display: flex;
+     flex-direction: column;
+     gap: var(--spacing-6);
+     min-width: 0;
+   }
 
   .card-title {
     font-size: var(--font-size-base);
@@ -180,10 +181,14 @@ const {
       color var(--duration-fast) ease;
   }
 
-  /* Expanded state */
-  .project-card.is-expanded .card-chevron {
-    transform: rotate(90deg);
-  }
+/* Expanded state */
+   .project-card.is-expanded {
+     padding: 24px 28px;
+   }
+
+   .project-card.is-expanded .card-chevron {
+     transform: rotate(90deg);
+   }
 
   /* Short description */
   .card-short-desc {
@@ -233,16 +238,16 @@ const {
   .card-divider {
     border: none;
     border-top: 1px solid var(--color-primitive-twilight-indigo);
-    margin: 4px 0 16px 0;
+    margin: 6px 0 16px 0;
   }
 
-  /* Sections inside expanded body */
-  .card-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
+/* Sections inside expanded body */
+    .card-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      margin-bottom: 16px;
+    }
 
   .section-title {
     font-size: var(--font-size-xs);
