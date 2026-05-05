@@ -112,16 +112,21 @@ const navItems = [
     gap: 10px;
     padding: 8px 0;
     text-decoration: none;
-    color: var(--color-text-secondary);
+    color: var(--color-primitive-silver-mist);
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-normal);
     white-space: nowrap;
-    transition: color var(--duration-fast) ease;
+    transition: color var(--duration-fast) ease, font-weight var(--duration-fast) ease;
   }
 
-  .sidebar__nav-item--active,
+  .sidebar__nav-item--active {
+    color: var(--color-primitive-white);
+    font-weight: var(--font-weight-bold);
+  }
+
   .sidebar__nav-item:hover {
     color: var(--color-primitive-white);
+    font-weight: var(--font-weight-medium);
   }
 
   /* Text label — hidden when collapsed, visible on hover */
