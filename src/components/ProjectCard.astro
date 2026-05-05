@@ -151,22 +151,22 @@ const {
                 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
-  .project-card.is-expanded {
-    padding: 24px 28px;
-  }
-
   .project-card:hover,
   .project-card:focus-visible {
     background-color: var(--card-hover-bg);
   }
 
   .project-card:focus-visible {
-    box-shadow: 0 0 0 2px var(--color-interactive-primary);
+    box-shadow:
+      0 0 0 2px rgba(244, 96, 54, 0.5),
+      0 8px 24px rgba(244, 96, 54, 0.12),
+      0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .project-card:hover .card-chevron,
   .project-card:focus-visible .card-chevron {
     color: var(--color-interactive-primary);
+    transform: rotate(90deg);
   }
 
   /* Header row */
@@ -186,6 +186,7 @@ const {
    }
 
   .card-title {
+    font-family: var(--font-family-display);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);

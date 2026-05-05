@@ -109,21 +109,7 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
     transform: rotate(90deg);
   }
 
-  .experience-card:hover,
-  .experience-card:focus-visible {
-    background-color: var(--card-hover-bg);
-  }
-
-  .experience-card:focus-visible {
-    box-shadow: 0 0 0 2px var(--color-interactive-primary);
-  }
-
-  .experience-card:hover .card-chevron,
-  .experience-card:focus-visible .card-chevron {
-    color: var(--color-interactive-primary);
-  }
-
-/* Header row */
+  /* Header row */
    .card-header {
      display: flex;
      justify-content: space-between;
@@ -140,6 +126,7 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
    }
 
   .card-role {
+    font-family: var(--font-family-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
