@@ -1,0 +1,45 @@
+{
+  "version": "2.11",
+  "variables": {
+    "color-accent": {
+      "type": "color",
+      "value": "#f46036"
+    },
+    "color-accent-blue": {
+      "type": "color",
+      "value": "#5b85aa"
+    },
+    "color-bg-dark": {
+      "type": "color",
+      "value": "#171123"
+    },
+    "color-bg-surface": {
+      "type": "color",
+      "value": "#372248"
+    },
+    "color-text-primary": {
+      "type": "color",
+      "value": "#ffffff"
+    },
+    "color-text-secondary": {
+      "type": "color",
+      "value": "#bbbcc4"
+    },
+    "sidebar-width": {
+      "type": "number",
+      "value": 64
+    },
+    "spacing-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "spacing-md": {
+      "type": "number",
+      "value": 16
+    },
+    "spacing-lg": {
+      "type": "number",
+      "value": 24
+    }
+  }
+}
