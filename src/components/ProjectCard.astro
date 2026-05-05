@@ -1,4 +1,8 @@
 ---
+import SkillTag from './SkillTag.astro';
+import SkillIcon from './SkillIcon.astro';
+import { skillLinks } from '../lib/skillLinks';
+
 interface Props {
   title: string;
   subtitle: string;
@@ -52,10 +56,12 @@ const {
   <!-- Collapsed: short description -->
   <p class="card-short-desc">{shortDescription}</p>
 
-  <!-- Collapsed: technology tags (inline SkillTag style, no import) -->
+  <!-- Collapsed: technology tags -->
   <div class="card-tags">
     {technologies.map((tech) => (
-      <span class="tech-tag">{tech}</span>
+      <SkillTag label={tech} href={skillLinks[tech]}>
+        <SkillIcon name={tech} slot="icon" />
+      </SkillTag>
     ))}
   </div>
 
@@ -74,7 +80,9 @@ const {
       <p class="section-title">Technologies:</p>
       <div class="card-tags card-tags--expanded">
         {technologies.map((tech) => (
-          <span class="tech-tag">{tech}</span>
+          <SkillTag label={tech} href={skillLinks[tech]}>
+            <SkillIcon name={tech} slot="icon" />
+          </SkillTag>
         ))}
       </div>
     </div>
@@ -194,40 +202,15 @@ const {
      transform: rotate(90deg);
    }
 
-  /* Short description */
-  .card-short-desc {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
+/* Short description */
+   .card-short-desc {
+     font-size: var(--font-size-xs);
+     color: var(--color-text-secondary);
+     line-height: 1.6;
+     margin: 0;
+   }
 
-  /* Technology tags (collapsed + expanded) */
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tech-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    border-radius: var(--border-radius-sm);
-    background-color: var(--color-primitive-twilight-indigo);
-    color: var(--color-primitive-white);
-    font-size: var(--font-size-xs);
-    line-height: 1;
-    white-space: nowrap;
-    transition: opacity var(--duration-fast) ease;
-    cursor: default;
-  }
-
-  .tech-tag:hover {
-    opacity: 0.8;
-  }
-
-  /* Body / accordion panel */
+   /* Body / accordion panel */
   .card-body {
     overflow: hidden;
     max-height: 0;

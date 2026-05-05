@@ -2,35 +2,61 @@
 interface Props {
   label: string;
   accent?: boolean;
+  href?: string;
 }
 
-const { label, accent = false } = Astro.props;
+const { label, accent = false, href } = Astro.props;
 ---
 
-<span class:list={['skill-tag', { 'skill-tag--accent': accent }]}>
-  {label}
-</span>
+{#if href}
+  <a href={href} class:list={['skill-tag', 'skill-tag--link', { 'skill-tag--accent': accent }]} target="_blank" rel="noopener noreferrer">
+    <slot name="icon" />
+    <span class="skill-tag__text">{label}</span>
+    <svg class="skill-tag__external" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+{:else}
+  <span class:list={['skill-tag', { 'skill-tag--accent': accent }]}>
+    <slot name="icon" />
+    <span class="skill-tag__text">{label}</span>
+  </span>
+{/if}
 
 <style>
-.skill-tag {
-     display: inline-flex;
-     align-items: center;
-     padding: 6px 12px;
-     border-radius: var(--border-radius-tag);
-     background-color: var(--color-primitive-twilight-indigo);
-     color: var(--color-primitive-white);
-     font-size: var(--font-size-xs);
-     line-height: 1;
-     white-space: nowrap;
-     transition: opacity var(--duration-fast) ease;
-     cursor: default;
-   }
-
-  .skill-tag:hover {
-    opacity: 0.8;
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--border-radius-tag);
+    background-color: var(--color-primitive-twilight-indigo);
+    color: var(--color-primitive-white);
+    font-size: var(--font-size-xs);
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: opacity var(--duration-fast) ease;
   }
 
-  .skill-tag--accent {
-    background-color: var(--color-interactive-primary);
+  .skill-tag:hover {
+    opacity: 0.85;
+  }
+
+  .skill-tag--link {
+    cursor: pointer;
+  }
+
+  .skill-tag__text {
+    display: inline-block;
+  }
+
+  .skill-tag__icon {
+    flex-shrink: 0;
+  }
+
+  .skill-tag__external {
+    flex-shrink: 0;
+    opacity: 0.7;
   }
 </style>
