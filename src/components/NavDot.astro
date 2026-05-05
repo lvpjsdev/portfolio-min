@@ -15,20 +15,20 @@ const { active } = Astro.props;
      height: 10px;
      flex-shrink: 0;
      border-radius: var(--border-radius-full);
-     background-color: var(--color-primitive-tiger-flame);
+     background-color: var(--color-primitive-twilight-indigo);
      transform: rotate(-0.030175490354247825deg);
      transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease;
    }
 
-  .nav-dot--active {
-    background-color: var(--color-primitive-white);
-  }
+   .nav-dot--active {
+     background-color: var(--color-primitive-white);
+   }
 
-  /* Dot меняет цвет когда родительская ссылка в hover/active */
-  :global(.sidebar__nav-item:hover) .nav-dot,
-  :global(.sidebar__nav-item--active) .nav-dot {
-    background-color: var(--color-primitive-white);
-  }
+   /* Dot меняет цвет когда родительская ссылка в hover/active */
+   :global(.sidebar__nav-item:hover) .nav-dot,
+   :global(.sidebar__nav-item--active) .nav-dot {
+     background-color: var(--color-primitive-white);
+   }
 
   :global(.sidebar__nav-item:hover) .nav-dot {
     transform: scale(1.5);

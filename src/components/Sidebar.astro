@@ -22,15 +22,15 @@ const navItems = [
   <ul class="sidebar__list" role="list">
     {navItems.map((item) => (
       <li>
-        <a
-          href={item.href}
-          class:list={['sidebar__nav-item', { 'sidebar__nav-item--active': currentPage === item.id }]}
-          aria-current={currentPage === item.id ? 'page' : undefined}
-          aria-label={item.label}
-        >
-          <NavDot active={currentPage === item.id} />
-          <span class="nav-label">{item.label}</span>
-        </a>
+<a
+           href={item.href}
+           class:list={['sidebar__nav-item', { 'sidebar__nav-item--active': currentPage === item.id }]}
+           aria-current={currentPage === item.id ? 'page' : undefined}
+           aria-label={item.label}
+         >
+           <NavDot active={currentPage === item.id} />
+           <span class="nav-label">{item.label}</span>
+         </a>
       </li>
     ))}
   </ul>
