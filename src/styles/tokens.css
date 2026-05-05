@@ -45,6 +45,10 @@
   --spacing-sm: 8px;
   --spacing-xl: 24px;
   --spacing-xs: 4px;
+  --color-sky-day: rgb(85% 93% 99%);
+  --color-sky-star: rgb(100% 98% 85%);
+  --color-sky-cloud: rgb(100% 100% 100% / 0.85);
+  --color-sky-meteor: linear-gradient(90deg, rgb(100% 95% 70%), transparent);
 }
 
 /* Light theme - default */
