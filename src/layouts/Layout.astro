@@ -50,13 +50,20 @@ const { currentPage, title = 'Portfolio' } = Astro.props;
 </html>
 
 <style>
-  html, body {
+  html {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  body {
     margin: 0;
     width: 100%;
     min-height: 100%;
     background-color: var(--color-background-page);
     color: var(--color-text-primary);
     font-family: var(--font-family-sans);
+    position: relative;
   }
 
   .theme-toggle-wrapper {
@@ -67,7 +74,7 @@ const { currentPage, title = 'Portfolio' } = Astro.props;
   }
 
   .main-content {
-    padding-left: 64px;
+    margin-left: 64px;
     min-height: 100vh;
   }
 

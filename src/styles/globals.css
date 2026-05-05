@@ -12,6 +12,17 @@ body {
   }
 }
 
+/* Light theme variables */
+[data-theme="light"] {
+  --color-background-page: rgb(96% 96% 97%);
+  --color-background-surface: rgb(94% 95% 96%);
+  --color-text-primary: rgb(10% 10% 8%);
+  --color-text-secondary: rgb(30% 30% 35%);
+  --color-primitive-twilight-indigo: rgb(85% 85% 90%);
+  --color-primitive-silver-mist: rgb(40% 40% 50%);
+  --color-primitive-white: rgb(10% 10% 8%);
+}
+
 /* Utility classes */
 .bg-page {
   background-color: var(--color-background-page);

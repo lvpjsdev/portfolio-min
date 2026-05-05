@@ -37,4 +37,24 @@ const { active } = Astro.props;
     transform: scale(1.5);
     box-shadow: 0 3px 8px rgba(244, 96, 54, 0.4);
   }
+
+  /* Домашняя страница: все точки оранжевые */
+  :global([data-page="home"]) .nav-dot {
+    background-color: rgb(244, 96, 54) !important;
+  }
+
+  :global([data-page="home"]) .sidebar__nav-item:hover .nav-dot,
+  :global([data-page="home"]) .sidebar__nav-item--active .nav-dot {
+    background-color: var(--color-primitive-white) !important;
+  }
+
+  /* Светлая тема: точки */
+  :global([data-theme="light"]) .nav-dot {
+    background-color: var(--color-primitive-twilight-indigo);
+  }
+
+  :global([data-theme="light"]) .sidebar__nav-item--active .nav-dot,
+  :global([data-theme="light"]) .sidebar__nav-item:hover .nav-dot {
+    background-color: rgb(244, 96, 54);
+  }
 </style>

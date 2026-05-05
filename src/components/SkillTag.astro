@@ -48,9 +48,15 @@ const { label, accent = false, href } = Astro.props;
   }
 
   .skill-tag:hover {
-    opacity: 0.85;
+    opacity: 1;
     transform: translateY(-1px);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-primitive-tiger-flame);
+  }
+
+  .skill-tag:hover .skill-tag__icon,
+  .skill-tag:hover .skill-tag__icon svg {
+    color: var(--color-primitive-white);
   }
 
   .skill-tag__text {

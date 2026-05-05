@@ -15,6 +15,7 @@ const tags = technologies.map((tech) => ({
 }));
 ---
 
+<div class="tech-tags">
 {tags.map(({ tech, href }) =>
   href ? (
     <SkillTag label={tech} href={href}>
@@ -26,3 +27,12 @@ const tags = technologies.map((tech) => ({
     </SkillTag>
   )
 )}
+</div>
+
+<style>
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>

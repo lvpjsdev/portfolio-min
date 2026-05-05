@@ -18,7 +18,7 @@ const navItems = [
 ---
 
 <!-- Desktop sidebar (≥ 768px) -->
-<nav class="sidebar" aria-label="Main navigation">
+<nav class="sidebar" aria-label="Main navigation" data-page={currentPage}>
   <ul class="sidebar__list" role="list">
     {navItems.map((item) => (
       <li>
@@ -65,8 +65,9 @@ const navItems = [
     z-index: 100;
     overflow: hidden;
     transition: width var(--duration-normal) ease, box-shadow var(--duration-normal) ease;
+    border-right: 1px solid var(--color-primitive-twilight-indigo);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
     /* Depth: subtle texture overlay */
-    position: relative;
   }
 
   .sidebar::before {
