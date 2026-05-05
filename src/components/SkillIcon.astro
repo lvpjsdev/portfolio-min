@@ -1,10 +1,12 @@
 ---
-interface Props {
+import { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'svg'> {
   name: string;
   size?: number;
 }
 
-const { name, size = 16 } = Astro.props;
+const { name, size = 16, ...props } = Astro.props;
 
 const iconMap: Record<string, string> = {
   Astro: `<path fill="currentColor" d="M14.483 0l-4.559 9.118H7.517l2.242-4.673L4.241 3.286l2.73-1.365L12.25 8.47l.02.042L7.517 0H5.434L0 12h2.083l1.766-3.673L8.25 16l1.227-2.546L7.517 12h2.927l2.624-5.454L14.483 0z"/>`,
@@ -20,7 +22,7 @@ const iconMap: Record<string, string> = {
 
 const icons = Object.keys(iconMap);
 const isValidIcon = icons.includes(name);
-const icon = isValidIcon ? iconMap[name] : `<circle cx="12" cy="12" r="10" fill="currentColor"/>`;
+const iconPath = isValidIcon ? iconMap[name] : `<circle cx="12" cy="12" r="10" fill="currentColor"/>`;
 ---
 
 <svg
@@ -30,6 +32,7 @@ const icon = isValidIcon ? iconMap[name] : `<circle cx="12" cy="12" r="10" fill=
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
+  {...props}
 >
-  {@html icon}
+  <Fragment set:html={iconPath} />
 </svg>

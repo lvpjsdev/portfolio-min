@@ -8,16 +8,21 @@ interface Props {
 }
 
 const { technologies } = Astro.props;
+
+const tags = technologies.map((tech) => ({
+  tech,
+  href: skillLinks[tech],
+}));
 ---
 
-{#each technologies as tech}
-  {#if skillLinks[tech]}
-    <SkillTag label={tech} href={skillLinks[tech]}>
+{tags.map(({ tech, href }) =>
+  href ? (
+    <SkillTag label={tech} href={href}>
       <SkillIcon name={tech} slot="icon" />
     </SkillTag>
-  {:else}
+  ) : (
     <SkillTag label={tech}>
       <SkillIcon name={tech} slot="icon" />
     </SkillTag>
-  {/if}
-{/each}
+  )
+)}
