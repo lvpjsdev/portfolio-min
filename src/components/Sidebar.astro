@@ -26,12 +26,9 @@ const navItems = [
           href={item.href}
           class:list={['sidebar__nav-item', { 'sidebar__nav-item--active': currentPage === item.id }]}
           aria-current={currentPage === item.id ? 'page' : undefined}
+          aria-label={item.label}
         >
-          <NavDot
-            active={currentPage === item.id}
-            href={item.href}
-            label={item.label}
-          />
+          <NavDot active={currentPage === item.id} />
           <span class="nav-label">{item.label}</span>
         </a>
       </li>
@@ -94,14 +91,18 @@ const navItems = [
   }
 
   .sidebar:hover .sidebar__list {
-    align-items: flex-start;
+    align-items: stretch;
     padding: 32px 20px;
     gap: 32px;
-    justify-content: center;
   }
 
   .sidebar__item {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar:hover .sidebar__item {
+    justify-content: flex-start;
   }
 
   /* NavItem wrapper — wraps NavDot + label */
@@ -116,7 +117,11 @@ const navItems = [
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-normal);
     white-space: nowrap;
-    transition: color var(--duration-fast) ease, font-weight var(--duration-fast) ease;
+    transition: color var(--duration-fast) ease;
+  }
+
+  .sidebar:hover .sidebar__nav-item {
+    width: 100%;
   }
 
   .sidebar__nav-item--active {

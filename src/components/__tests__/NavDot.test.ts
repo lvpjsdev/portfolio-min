@@ -1,29 +1,24 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import '@testing-library/jest-dom';
 
 /**
  * Unit tests for NavDot component.
  *
- * Since Astro components cannot be imported directly in Vitest (they require a build step),
- * we manually construct the HTML that NavDot.astro produces and test the DOM structure.
+ * NavDot.astro renders a decorative <span> dot — navigation is handled
+ * by the parent <a> in Sidebar. This avoids invalid nested <a> elements.
  *
  * NavDot.astro renders:
- * <a
- *   href={href}
+ * <span
  *   class="nav-dot [nav-dot--active]"
- *   aria-label={label}
- *   aria-current={active ? 'page' : undefined}
- * ></a>
+ *   aria-hidden="true"
+ * ></span>
  */
 
-// Helper: build the HTML string that NavDot.astro would render
-function renderNavDot(props: { active: boolean; href: string; label: string }): HTMLElement {
-  const { active, href, label } = props;
+function renderNavDot(props: { active: boolean }): HTMLElement {
+  const { active } = props;
 
   const classes = ['nav-dot', ...(active ? ['nav-dot--active'] : [])].join(' ');
-  const ariaCurrent = active ? ' aria-current="page"' : '';
-
-  const html = `<a href="${href}" class="${classes}" aria-label="${label}"${ariaCurrent}></a>`;
+  const html = `<span class="${classes}" aria-hidden="true"></span>`;
 
   const container = document.createElement('div');
   container.innerHTML = html;
@@ -33,74 +28,32 @@ function renderNavDot(props: { active: boolean; href: string; label: string }): 
 // ─── Tests ────────────────────────────────────────────────────────────────────
 
 describe('NavDot', () => {
-  // Requirement 2.1 — renders as a circle with 10×10px (class nav-dot is present)
-  describe('renders as a circle with nav-dot class', () => {
+  describe('renders as a decorative span', () => {
     it('has the nav-dot class', () => {
-      const el = renderNavDot({ active: false, href: '/', label: 'Home' });
+      const el = renderNavDot({ active: false });
       expect(el).toHaveClass('nav-dot');
     });
 
-    it('renders as an <a> element', () => {
-      const el = renderNavDot({ active: false, href: '/', label: 'Home' });
-      expect(el.tagName.toLowerCase()).toBe('a');
+    it('renders as a <span> element', () => {
+      const el = renderNavDot({ active: false });
+      expect(el.tagName.toLowerCase()).toBe('span');
+    });
+
+    it('is hidden from assistive technologies', () => {
+      const el = renderNavDot({ active: false });
+      expect(el).toHaveAttribute('aria-hidden', 'true');
     });
   });
 
-  // Requirement 2.2 — active prop controls the active class
   describe('nav-dot--active class', () => {
     it('applies nav-dot--active when active=true', () => {
-      const el = renderNavDot({ active: true, href: '/about', label: 'About Me' });
+      const el = renderNavDot({ active: true });
       expect(el).toHaveClass('nav-dot--active');
     });
 
     it('does NOT apply nav-dot--active when active=false', () => {
-      const el = renderNavDot({ active: false, href: '/about', label: 'About Me' });
+      const el = renderNavDot({ active: false });
       expect(el).not.toHaveClass('nav-dot--active');
-    });
-  });
-
-  // Requirement 2.3 / 2.4 — aria-label is set correctly
-  describe('aria-label', () => {
-    it('sets aria-label to the provided label', () => {
-      const el = renderNavDot({ active: false, href: '/skills', label: 'Skills' });
-      expect(el).toHaveAttribute('aria-label', 'Skills');
-    });
-
-    it('sets aria-label correctly for each page', () => {
-      const pages = [
-        { href: '/', label: 'Home' },
-        { href: '/about', label: 'About Me' },
-        { href: '/experience', label: 'Work Experience' },
-        { href: '/projects', label: 'Projects' },
-        { href: '/skills', label: 'Skills' },
-        { href: '/contact', label: 'Contact' },
-      ];
-
-      pages.forEach(({ href, label }) => {
-        const el = renderNavDot({ active: false, href, label });
-        expect(el).toHaveAttribute('aria-label', label);
-      });
-    });
-  });
-
-  // Requirement 2.3 — aria-current="page" when active=true
-  describe('aria-current', () => {
-    it('sets aria-current="page" when active=true', () => {
-      const el = renderNavDot({ active: true, href: '/', label: 'Home' });
-      expect(el).toHaveAttribute('aria-current', 'page');
-    });
-
-    it('does NOT set aria-current when active=false', () => {
-      const el = renderNavDot({ active: false, href: '/', label: 'Home' });
-      expect(el).not.toHaveAttribute('aria-current');
-    });
-  });
-
-  // href is forwarded correctly
-  describe('href', () => {
-    it('sets the href attribute to the provided value', () => {
-      const el = renderNavDot({ active: false, href: '/projects', label: 'Projects' });
-      expect(el).toHaveAttribute('href', '/projects');
     });
   });
 });

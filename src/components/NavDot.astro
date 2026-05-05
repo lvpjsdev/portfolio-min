@@ -1,38 +1,35 @@
 ---
 interface Props {
   active: boolean;
-  href: string;
-  label: string;
 }
 
-const { active, href, label } = Astro.props;
+const { active } = Astro.props;
 ---
 
-<a
-  href={href}
-  class:list={['nav-dot', { 'nav-dot--active': active }]}
-  aria-label={label}
-  aria-current={active ? 'page' : undefined}
-></a>
+<span class:list={['nav-dot', { 'nav-dot--active': active }]} aria-hidden="true"></span>
 
 <style>
   .nav-dot {
     display: block;
     width: 10px;
     height: 10px;
+    flex-shrink: 0;
     border-radius: var(--border-radius-full);
     background-color: var(--color-primitive-tiger-flame);
     transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease;
-    flex-shrink: 0;
-    text-decoration: none;
   }
 
   .nav-dot--active {
     background-color: var(--color-primitive-white);
   }
 
-  .nav-dot:hover {
+  /* Dot меняет цвет когда родительская ссылка в hover/active */
+  :global(.sidebar__nav-item:hover) .nav-dot,
+  :global(.sidebar__nav-item--active) .nav-dot {
     background-color: var(--color-primitive-white);
+  }
+
+  :global(.sidebar__nav-item:hover) .nav-dot {
     transform: scale(1.5);
   }
 </style>
