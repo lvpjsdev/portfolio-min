@@ -1,0 +1,57 @@
+---
+// Pre-compute positions for elements (light effect: ~30 stars, 3-4 meteors, 3-5 clouds)
+const stars = Array.from({ length: 30 }, (_, i) => ({
+  id: i,
+  x: `${(i * 37 + 13) % 100}%`,
+  y: `${(i * 23 + 7) % 100}%`,
+  size: `${2 + (i % 3)}px`,
+  delay: `${(i * 0.3) % 5}s`,
+  duration: `${2 + (i % 3)}s`
+}));
+
+const meteors = Array.from({ length: 4 }, (_, i) => ({
+  id: i,
+  x: `${80 + (i * 15)}%`,
+  y: `${10 + (i * 20)}%`,
+  delay: `${i * 3}s`,
+  duration: '1.5s'
+}));
+
+const clouds = Array.from({ length: 4 }, (_, i) => ({
+  id: i,
+  x: `${(i * 30) % 100}%`,
+  y: `${10 + (i * 15)}%`,
+  width: `${100 + (i * 20)}px`,
+  height: `${40 + (i * 10)}px`,
+  delay: `${(i * 5) % 15}s`,
+  duration: `${15 + (i * 5)}s`
+}));
+---
+
+<div class="animated-bg">
+  <!-- Night sky layer -->
+  <div class="night-sky">
+    {stars.map(star => (
+      <div
+        class="star"
+        style={`--star-size: ${star.size}; --twinkle-delay: ${star.delay}; --twinkle-duration: ${star.duration}; left: ${star.x}; top: ${star.y};`}
+      ></div>
+    ))}
+    {meteors.map(meteor => (
+      <div
+        class="meteor"
+        style={`--fall-delay: ${meteor.delay}; --fall-duration: ${meteor.duration}; left: ${meteor.x}; top: ${meteor.y};`}
+      ></div>
+    ))}
+  </div>
+
+  <!-- Day sky layer -->
+  <div class="day-sky">
+    {clouds.map(cloud => (
+      <div
+        class="cloud"
+        style={`--cloud-width: ${cloud.width}; --cloud-height: ${cloud.height}; --drift-delay: ${cloud.delay}; --drift-duration: ${cloud.duration}; left: ${cloud.x}; top: ${cloud.y};`}
+      ></div>
+    ))}
+  </div>
+</div>
