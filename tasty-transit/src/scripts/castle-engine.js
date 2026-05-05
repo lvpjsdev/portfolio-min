@@ -144,21 +144,21 @@ export function initCanvas(canvasElement) {
     console.error('Failed to load castle-day.png');
     showFallbackBackground();
   };
-  castleDayImg.src = '/src/assets/castle/castle-day.png';
+  castleDayImg.src = '/castle/castle-day.png';
   
   castleNightImg = new Image();
   castleNightImg.onerror = () => {
     console.error('Failed to load castle-night.png');
     showFallbackBackground();
   };
-  castleNightImg.src = '/src/assets/castle/castle-night.png';
+  castleNightImg.src = '/castle/castle-night.png';
   
   starsImg = new Image();
   starsImg.onerror = () => {
     console.error('Failed to load stars-overlay.png');
     // Non-critical, just log
   };
-  starsImg.src = '/src/assets/castle/stars-overlay.png';
+  starsImg.src = '/castle/stars-overlay.png';
   
   let loaded = 0;
   const total = 3;
@@ -258,17 +258,15 @@ export function addPOIClickHandler(canvasElement) {
     const imgY = vp.y + (clickY - 0.5) / vp.zoom;
     
     // Check if click is near any bonus POI
-    import('../data/points-of-interest.js').then(({ pointsOfInterest }) => {
-      pointsOfInterest.forEach(poi => {
-        if (poi.bonus && Math.abs(poi.x - imgX) < 0.05 && Math.abs(poi.y - imgY) < 0.05) {
-          // Navigate to secret page or open modal
-          window.location.href = `/${poi.id}`;
-        }
-      });
+    pointsOfInterest.forEach(poi => {
+      if (poi.bonus && Math.abs(poi.x - imgX) < 0.05 && Math.abs(poi.y - imgY) < 0.05) {
+        // Navigate to secret page or open modal
+        window.location.href = `/${poi.id}`;
+      }
     });
   });
   
-  // Add hover cursor change
+    // Add hover cursor change
   canvasElement.addEventListener('mousemove', (e) => {
     const rect = canvasElement.getBoundingClientRect();
     const hoverX = (e.clientX - rect.left) / rect.width;
@@ -279,13 +277,11 @@ export function addPOIClickHandler(canvasElement) {
     const imgY = vp.y + (hoverY - 0.5) / vp.zoom;
     
     let isOverPOI = false;
-    import('../data/points-of-interest.js').then(({ pointsOfInterest }) => {
-      pointsOfInterest.forEach(poi => {
-        if (poi.bonus && Math.abs(poi.x - imgX) < 0.05 && Math.abs(poi.y - imgY) < 0.05) {
-          isOverPOI = true;
-        }
-      });
-      canvasElement.style.cursor = isOverPOI ? 'pointer' : 'default';
+    pointsOfInterest.forEach(poi => {
+      if (poi.bonus && Math.abs(poi.x - imgX) < 0.05 && Math.abs(poi.y - imgY) < 0.05) {
+        isOverPOI = true;
+      }
     });
+    canvasElement.style.cursor = isOverPOI ? 'pointer' : 'default';
   });
 }
