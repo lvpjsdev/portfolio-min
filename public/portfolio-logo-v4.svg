@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo variant 4: Minimal Infinity Loop -->
+  <defs>
+    <linearGradient id="infGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f46036"/>
+      <stop offset="100%" stop-color="#5b85aa"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background -->
+  <rect x="25" y="25" width="150" height="150" rx="24" fill="#372248"/>
+  
+  <!-- Infinity symbol (∞) stylized -->
+  <path d="M60 100 
+           C60 70, 100 70, 100 100
+           C100 130, 60 130, 60 100
+           M100 100
+           C100 70, 140 70, 140 100
+           C140 130, 100 130, 100 100"
+        stroke="url(#infGrad)" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        fill="none"/>
+  
+  <!-- Subtle accent line -->
+  <line x1="50" y1="150" x2="150" y2="150" stroke="#414770" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+</svg>

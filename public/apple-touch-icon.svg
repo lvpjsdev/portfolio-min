@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Apple Touch Icon 180x180 -->
+  <defs>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f46036"/>
+      <stop offset="100%" stop-color="#5b85aa"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Rounded square background -->
+  <rect x="10" y="10" width="160" height="160" rx="36" fill="#171123"/>
+  
+  <!-- Large center circle -->
+  <circle cx="90" cy="90" r="45" fill="none" stroke="url(#accentGrad)" stroke-width="6" opacity="0.8"/>
+  
+  <!-- Left bracket < -->
+  <path d="M40 45 L20 90 L40 135" 
+        stroke="#f46036" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"
+        filter="url(#glow)"/>
+  
+  <!-- Stylized letters LP merged -->
+  <g fill="none" stroke="#5b85aa" stroke-width="10" stroke-linecap="round">
+    <!-- P (Petrov) - vertical line with loop -->
+    <path d="M75 45 V135"/>
+    <path d="M75 45 A30 30 0 0 1 105 45"/>
+    <!-- L (Leonid) - horizontal extension from P -->
+    <path d="M105 95 H150" stroke-width="12"/>
+    <path d="M105 135 H150" stroke-width="12"/>
+  </g>
+  
+  <!-- Right bracket > -->
+  <path d="M140 45 L160 90 L140 135" 
+        stroke="#f46036" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"
+        filter="url(#glow)"/>
+  
+  <!-- Center accent point -->
+  <circle cx="90" cy="90" r="6" fill="#f46036"/>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Favicon 48x48: highest detail -->
+  <rect width="48" height="48" rx="8" fill="#171123"/>
+  <!-- Left bracket < -->
+  <path d="M13 8 L7 24 L13 40" stroke="#f46036" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Letter L inside (Leonid) -->
+  <path d="M20 10 V38" stroke="#5b85aa" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 38 H34" stroke="#5b85aa" stroke-width="3" stroke-linecap="round"/>
+  <!-- Right bracket > -->
+  <path d="M35 8 L41 24 L35 40" stroke="#f46036" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Small accent dots -->
+  <circle cx="24" cy="24" r="2" fill="#f46036"/>
+  <circle cx="14" cy="24" r="1.5" fill="#5b85aa" opacity="0.6"/>
+  <circle cx="34" cy="24" r="1.5" fill="#5b85aa" opacity="0.6"/>
+</svg>

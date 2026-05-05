@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Logo & Favicon Preview</title>
+  <style>
+    :root {
+      --tiger-flame: #f46036;
+      --dusty-denim: #5b85aa;
+      --twilight-indigo: #414770;
+      --dark-amethyst: #372248;
+      --midnight-violet: #171123;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--midnight-violet);
+      color: #fff;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(90deg, var(--tiger-flame), var(--dusty-denim)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { color: var(--dusty-denim); margin-bottom: 40px; font-size: 1.1rem; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .card { background: var(--dark-amethyst); border-radius: 16px; padding: 24px; border: 1px solid var(--twilight-indigo); }
+    .card h2 { font-size: 1.2rem; margin-bottom: 16px; color: var(--tiger-flame); }
+    .preview { display: flex; justify-content: center; align-items: center; height: 200px; background: var(--midnight-violet); border-radius: 12px; margin-bottom: 16px; }
+    .preview img, .preview object { width: 120px; height: 120px; }
+    .preview-fav { height: 100px; }
+    .preview-fav img { width: 32px; height: 32px; }
+    .colors { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
+    .color-swatch { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #fff; }
+    .desc { font-size: 0.9rem; color: #aaa; line-height: 1.5; margin-bottom: 16px; }
+    .btn { display: inline-block; padding: 10px 20px; background: linear-gradient(90deg, var(--tiger-flame), var(--dusty-denim)); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.2s; border: none; cursor: pointer; }
+    .btn:hover { transform: scale(1.05); }
+    
+    .usage { margin-top: 40px; background: var(--dark-amethyst); padding: 24px; border-radius: 16px; border: 1px solid var(--twilight-indigo); }
+    .usage h2 { color: var(--tiger-flame); margin-bottom: 16px; }
+    .usage pre { background: var(--midnight-violet); padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; color: #ddd; }
+    .usage code { color: var(--tiger-flame); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portfolio Logo & Favicon</h1>
+    <p class="subtitle">Generated with your color palette: Tiger Flame, Dusty Denim, Twilight Indigo</p>
+    
+    <div class="grid">
+      <!-- Variant 1 -->
+      <div class="card">
+        <h2>Variant 1: Code Brackets (< > + L)</h2>
+        <div class="preview">
+          <object type="image/svg+xml" data="/Users/leonidpetrov/portfolio-logo-v1.svg"></object>
+        </div>
+        <div class="colors">
+          <div class="color-swatch" style="background:#f46036"></div>
+          <div class="color-swatch" style="background:#5b85aa"></div>
+          <div class="color-swatch" style="background:#171123"></div>
+        </div>
+        <p class="desc">Modern frontend aesthetic with code brackets. Best for main site header.</p>
+        <a href="/Users/leonidpetrov/portfolio-logo-v1.svg" download class="btn">Download SVG</a>
+      </div>
+      
+      <!-- Variant 2 -->
+      <div class="card">
+        <h2>Variant 2: Geometric Monogram (LP)</h2>
+        <div class="preview">
+          <object type="image/svg+xml" data="/Users/leonidpetrov/portfolio-logo-v2.svg"></object>
+        </div>
+        <div class="colors">
+          <div class="color-swatch" style="background:#5b85aa"></div>
+          <div class="color-swatch" style="background:#f46036"></div>
+          <div class="color-swatch" style="background:#414770"></div>
+        </div>
+        <p class="desc">Clean overlapping letters. Works well on dark backgrounds.</p>
+        <a href="/Users/leonidpetrov/portfolio-logo-v2.svg" download class="btn">Download SVG</a>
+      </div>
+      
+      <!-- Variant 3 -->
+      <div class="card">
+        <h2>Variant 3: Neural Node (AI/Code)</h2>
+        <div class="preview">
+          <object type="image/svg+xml" data="/Users/leonidpetrov/portfolio-logo-v3.svg"></object>
+        </div>
+        <div class="colors">
+          <div class="color-swatch" style="background:#f46036"></div>
+          <div class="color-swatch" style="background:#5b85aa"></div>
+          <div class="color-swatch" style="background:#414770"></div>
+        </div>
+        <p class="desc">Represents neural networks, connections, and modern AI stack.</p>
+        <a href="/Users/leonidpetrov/portfolio-logo-v3.svg" download class="btn">Download SVG</a>
+      </div>
+      
+      <!-- Variant 4 -->
+      <div class="card">
+        <h2>Variant 4: Infinity Loop</h2>
+        <div class="preview">
+          <object type="image/svg+xml" data="/Users/leonidpetrov/portfolio-logo-v4.svg"></object>
+        </div>
+        <div class="colors">
+          <div class="color-swatch" style="background:#f46036"></div>
+          <div class="color-swatch" style="background:#5b85aa"></div>
+          <div class="color-swatch" style="background:#372248"></div>
+        </div>
+        <p class="desc">Clean infinity symbol representing continuous learning and code.</p>
+        <a href="/Users/leonidpetrov/portfolio-logo-v4.svg" download class="btn">Download SVG</a>
+      </div>
+      
+      <!-- Favicon -->
+      <div class="card">
+        <h2>Favicon (32×32)</h2>
+        <div class="preview preview-fav">
+          <img src="/Users/leonidpetrov/portfolio-favicon.svg" alt="Favicon">
+        </div>
+        <div class="colors">
+          <div class="color-swatch" style="background:#171123"></div>
+          <div class="color-swatch" style="background:#f46036"></div>
+          <div class="color-swatch" style="background:#5b85aa"></div>
+        </div>
+        <p class="desc">Small icon for browser tabs. Use as /favicon.ico or .svg.</p>
+        <a href="/Users/leonidpetrov/portfolio-favicon.svg" download class="btn">Download Favicon</a>
+      </div>
+      
+      <!-- Text Logo -->
+      <div class="card">
+        <h2>Text Logo CSS</h2>
+        <div class="preview">
+          <div style="font-family: monospace; font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #f46036, #5b85aa, #414770); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            LP
+          </div>
+        </div>
+        <div class="colors">
+          <div class="color-swatch" style="background:#f46036"></div>
+          <div class="color-swatch" style="background:#5b85aa"></div>
+          <div class="color-swatch" style="background:#414770"></div>
+        </div>
+        <p class="desc">Simple text-based logo with gradient. Works at any size.</p>
+        <button class="btn" onclick="copyCSS()">Copy CSS</button>
+      </div>
+    </div>
+    
+    <!-- Usage instructions -->
+    <div class="usage">
+      <h2>🚀 How to Use</h2>
+      <pre><code>&lt;!-- Favicon in HTML head --&gt;
+&lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+
+&lt;!-- Logo in header --&gt;
+&lt;img src="/logo.svg" alt="Leonid Petrov" width="120" height="120"&gt;
+
+&lt;!-- CSS text logo --&gt;
+&lt;style&gt;
+  .logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #f46036, #5b85aa, #414770);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+  }
+&lt;/style&gt;
+&lt;div class="logo-text"&gt;LP&lt;/div&gt;</code></pre>
+
+      <h3 style="color:var(--dusty-denim);margin-top:20px;">Convert SVG → PNG (if needed)</h3>
+      <pre><code># Using Inkscape (CLI)
+inkscape -w 32 -h 32 portfolio-favicon.svg -o favicon-32x32.png
+inkscape -w 180 -h 180 portfolio-logo-v1.svg -o logo-180x180.png
+
+# Using ImageMagick
+convert -background none portfolio-favicon.svg -resize 32x32 favicon-32x32.png</code></pre>
+    </div>
+  </div>
+
+  <script>
+    function copyCSS() {
+      const css = `.logo-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #f46036, #5b85aa, #414770);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -2px;
+}`;
+      navigator.clipboard.writeText(css).then(() => alert('CSS copied!'));
+    }
+  </script>
+</body>
+</html>
