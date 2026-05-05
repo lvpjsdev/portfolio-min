@@ -42,9 +42,14 @@
   background-color: var(--color-background-page);
 }
 
-[data-theme="dark"] .night-sky,
-:root:not([data-theme])[data-theme="dark"] .night-sky {
+[data-theme="dark"] .night-sky {
   opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .night-sky {
+    opacity: 1;
+  }
 }
 
 /* Day sky layer */
@@ -67,6 +72,7 @@
   background: var(--color-sky-star);
   border-radius: 50%;
   animation: twinkle var(--twinkle-duration, 3s) ease-in-out var(--twinkle-delay, 0s) infinite;
+  will-change: opacity;
 }
 
 /* Meteor element */
@@ -79,6 +85,7 @@
   transform: rotate(-45deg);
   animation: fall var(--fall-duration, 1.5s) linear var(--fall-delay, 0s) infinite;
   opacity: 0;
+  will-change: transform, opacity;
 }
 
 /* Cloud element */
@@ -92,4 +99,13 @@
   box-shadow: 15px 0 0 10px var(--color-sky-cloud),
               -15px 5px 0 5px var(--color-sky-cloud),
               0 10px 0 8px var(--color-sky-cloud);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .meteor,
+  .cloud {
+    animation: none;
+  }
 }
