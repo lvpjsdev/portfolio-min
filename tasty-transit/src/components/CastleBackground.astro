@@ -10,32 +10,42 @@ const { startPOI = 'index' } = Astro.props;
 <canvas id="castle-canvas" class="castle-canvas"></canvas>
 
 <script>
-  import { initCanvas, initTheme, setViewport, checkPerformance, isLowPerf, addPOIClickHandler, onThemeChange, getViewport } from '../scripts/castle-engine.js';
+  import { initCanvas, initTheme, setViewport, checkPerformance, isLowPerf, addPOIClickHandler, onThemeChange, getViewport, isPerfCheckDone } from '../scripts/castle-engine.js';
   import { pointsOfInterest } from '../data/points-of-interest.js';
   
   // Initialize
   const canvas = document.getElementById('castle-canvas');
-  checkPerformance();
   initTheme();
-  initCanvas(canvas);
-  addPOIClickHandler(canvas);
   
-  // Listen for theme changes to re-render
-  onThemeChange(() => {
-    const current = getViewport();
-    setViewport(current.x, current.y, current.zoom, false);
-  });
-
-  // Set initial viewport based on current page
-  const currentPOI = pointsOfInterest.find(p => p.id === startPOI) || pointsOfInterest[0];
-  setViewport(currentPOI.x, currentPOI.y, currentPOI.zoom, false);
+  // Wait for performance check to complete before initializing canvas
+  function initWhenReady() {
+    if (!isPerfCheckDone()) {
+      setTimeout(initWhenReady, 50);
+      return;
+    }
+    
+    initCanvas(canvas);
+    addPOIClickHandler(canvas);
+    
+    // Listen for theme changes to re-render
+    onThemeChange(() => {
+      const current = getViewport();
+      setViewport(current.x, current.y, current.zoom, false);
+    });
+    
+    // Set initial viewport based on current page
+    const currentPOI = pointsOfInterest.find(p => p.id === startPOI) || pointsOfInterest[0];
+    setViewport(currentPOI.x, currentPOI.y, currentPOI.zoom, false);
+    
+    // Listen for page changes (Astro View Transitions)
+    document.addEventListener('astro:page-load', () => {
+      const page = window.location.pathname.split('/').pop() || 'index';
+      const poi = pointsOfInterest.find(p => p.id === page) || pointsOfInterest[0];
+      setViewport(poi.x, poi.y, poi.zoom, !isLowPerf());
+    });
+  }
   
-  // Listen for page changes (Astro View Transitions)
-  document.addEventListener('astro:page-load', () => {
-    const page = window.location.pathname.split('/').pop() || 'index';
-    const poi = pointsOfInterest.find(p => p.id === page) || pointsOfInterest[0];
-    setViewport(poi.x, poi.y, poi.zoom, !isLowPerf());
-  });
+  checkPerformance(initWhenReady);
 </script>
 
 <style>

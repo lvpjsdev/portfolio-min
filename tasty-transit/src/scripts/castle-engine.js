@@ -2,18 +2,28 @@ import { pointsOfInterest } from '../data/points-of-interest.js';
 
 // Part 1: Performance guard
 let lowPerf = false;
+let perfCheckDone = false;
+let perfCallback = null;
 
-export function checkPerformance() {
+export function checkPerformance(callback) {
+  perfCallback = callback || null;
+  
+  // Synchronous checks
   if (navigator.deviceMemory && navigator.deviceMemory < 4) {
     lowPerf = true;
+    perfCheckDone = true;
+    if (perfCallback) perfCallback();
     return;
   }
   
   if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
     lowPerf = true;
+    perfCheckDone = true;
+    if (perfCallback) perfCallback();
     return;
   }
   
+  // Asynchronous FPS check
   let frameCount = 0;
   const startTime = performance.now();
   
@@ -27,10 +37,20 @@ export function checkPerformance() {
       if (fps < 30) {
         lowPerf = true;
       }
+      perfCheckDone = true;
+      if (perfCallback) perfCallback();
     }
   }
   
   requestAnimationFrame(countFrame);
+}
+
+export function isLowPerf() {
+  return lowPerf;
+}
+
+export function isPerfCheckDone() {
+  return perfCheckDone;
 }
 
 export function isLowPerf() {
