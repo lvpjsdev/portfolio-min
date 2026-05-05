@@ -2,15 +2,17 @@ import { defineConfig } from '@terrazzo/cli';
 import pluginCSS from '@terrazzo/plugin-css';
 
 export default defineConfig({
-  tokens: ['./tokens/**/*.json'],
+  tokens: [
+    './tokens/primitives.tokens.json',
+    './tokens/semantic.tokens.json',
+    './tokens/light/tokens.json',
+    './tokens/dark/tokens.json',
+  ],
   outDir: './src/styles/',
   plugins: [
     pluginCSS({
       filename: 'tokens.css',
-      modeSelectors: [
-        { mode: 'light', selectors: [':root', "[data-theme='light']"] },
-        { mode: 'dark', selectors: ["[data-theme='dark']", '@media (prefers-color-scheme: dark)'] },
-      ],
+      baseSelector: ':root',
     }),
   ],
 });

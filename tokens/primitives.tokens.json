@@ -3,31 +3,43 @@
     "primitive": {
       "midnight-violet": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [0.09, 0.07, 0.14], "hex": "#171123" }
+        "$value": { "colorSpace": "srgb", "components": [0.09, 0.07, 0.14], "hex": "#171123" },
+        "$description": "Dark background - main page background"
       },
       "dark-amethyst": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [0.22, 0.13, 0.28], "hex": "#372248" }
+        "$value": { "colorSpace": "srgb", "components": [0.22, 0.13, 0.28], "hex": "#372248" },
+        "$description": "Surface color - cards, sidebar"
       },
       "tiger-flame": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [0.96, 0.38, 0.21], "hex": "#f46036" }
+        "$value": { "colorSpace": "srgb", "components": [0.96, 0.38, 0.21], "hex": "#f46036" },
+        "$description": "Primary accent - links, highlights, icons"
       },
       "dusty-denim": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [0.36, 0.52, 0.67], "hex": "#5b85aa" }
+        "$value": { "colorSpace": "srgb", "components": [0.36, 0.52, 0.67], "hex": "#5b85aa" },
+        "$description": "Secondary accent - subtitles, secondary text"
       },
       "twilight-indigo": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [0.25, 0.28, 0.44], "hex": "#414770" }
+        "$value": { "colorSpace": "srgb", "components": [0.25, 0.28, 0.44], "hex": "#414770" },
+        "$description": "Tertiary - tags, buttons, dividers"
+      },
+      "silver-mist": {
+        "$type": "color",
+        "$value": { "colorSpace": "srgb", "components": [0.73, 0.74, 0.77], "hex": "#bbbcc4" },
+        "$description": "Secondary text color - descriptions, labels"
       },
       "white": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "hex": "#ffffff" }
+        "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "hex": "#ffffff" },
+        "$description": "Primary text color (dark theme)"
       },
       "black": {
         "$type": "color",
-        "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "hex": "#000000" }
+        "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "hex": "#000000" },
+        "$description": "Primary text color (light theme)"
       }
     }
   },
