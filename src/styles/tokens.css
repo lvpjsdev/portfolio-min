@@ -11,8 +11,6 @@
   --border-radius-none: 0;
   --border-radius-sm: 4px;
   --border-radius-xl: 16px;
-  --color-background-page: rgb(9% 7% 14%);
-  --color-background-surface: rgb(22% 13% 28%);
   --color-interactive-primary: var(--color-primitive-tiger-flame);
   --color-interactive-secondary: var(--color-primitive-dusty-denim);
   --color-primitive-black: rgb(0% 0% 0%);
@@ -22,8 +20,6 @@
   --color-primitive-tiger-flame: rgb(96% 38% 21%);
   --color-primitive-twilight-indigo: rgb(25% 28% 44%);
   --color-primitive-white: rgb(100% 100% 100%);
-  --color-text-primary: rgb(100% 100% 100%);
-  --color-text-secondary: rgb(73% 74% 78%);
   --duration-fast: 200ms;
   --duration-normal: 300ms;
   --duration-slow: 550ms;
