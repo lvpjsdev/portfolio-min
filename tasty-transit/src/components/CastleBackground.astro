@@ -1,0 +1,44 @@
+---
+// tasty-transit/src/components/CastleBackground.astro
+export interface Props {
+  startPOI?: string;
+}
+
+const { startPOI = 'index' } = Astro.props;
+---
+
+<canvas id="castle-canvas" class="castle-canvas"></canvas>
+
+<script>
+  import { initCanvas, initTheme, setViewport, checkPerformance, isLowPerf } from '../scripts/castle-engine.js';
+  import { pointsOfInterest } from '../data/points-of-interest.js';
+  
+  // Initialize
+  const canvas = document.getElementById('castle-canvas');
+  checkPerformance();
+  initTheme();
+  initCanvas(canvas);
+  
+  // Set initial viewport based on current page
+  const currentPOI = pointsOfInterest.find(p => p.id === '${startPOI}') || pointsOfInterest[0];
+  setViewport(currentPOI.x, currentPOI.y, currentPOI.zoom, false);
+  
+  // Listen for page changes (Astro View Transitions)
+  document.addEventListener('astro:page-load', () => {
+    const page = window.location.pathname.split('/').pop() || 'index';
+    const poi = pointsOfInterest.find(p => p.id === page) || pointsOfInterest[0];
+    setViewport(poi.x, poi.y, poi.zoom, !isLowPerf());
+  });
+</script>
+
+<style>
+  .castle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    image-rendering: pixelated; /* Keep pixel art crisp */
+  }
+</style>
