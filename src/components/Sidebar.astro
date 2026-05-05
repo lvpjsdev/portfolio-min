@@ -122,6 +122,8 @@ const navItems = [
 
   /* Text label — скрыт в collapsed, виден при hover */
   .nav-label {
+    width: 0;
+    overflow: hidden;
     opacity: 0;
     white-space: nowrap;
     transition: opacity var(--duration-fast) ease;
@@ -129,6 +131,7 @@ const navItems = [
   }
 
   .sidebar:hover .nav-label {
+    width: auto;
     opacity: 1;
   }
 
