@@ -9,7 +9,7 @@ const { label, accent = false, href } = Astro.props;
 ---
 
 {#if href}
-  <a href={href} class:list={['skill-tag', 'skill-tag--link', { 'skill-tag--accent': accent }]} target="_blank" rel="noopener noreferrer">
+  <a href={href} class:list={['skill-tag', 'skill-tag--link', { 'skill-tag--accent': accent }]} target="_blank" rel="noopener noreferrer" aria-label={`${label} documentation (external link)`}>
     <slot name="icon" />
     <span class="skill-tag__text">{label}</span>
     <svg class="skill-tag__external" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -39,12 +39,16 @@ const { label, accent = false, href } = Astro.props;
     transition: opacity var(--duration-fast) ease;
   }
 
-  .skill-tag:hover {
-    opacity: 0.85;
-  }
-
   .skill-tag--link {
     cursor: pointer;
+  }
+
+  .skill-tag--accent {
+    background-color: var(--color-interactive-primary);
+  }
+
+  .skill-tag:hover {
+    opacity: 0.85;
   }
 
   .skill-tag__text {

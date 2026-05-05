@@ -8,5 +8,4 @@ export const skillLinks: Record<string, string> = {
   JavaScript: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
   HTML: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
   Git: 'https://git-scm.com/docs',
-  Terrazzo: 'https://localhost:3000',
 };

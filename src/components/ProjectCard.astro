@@ -1,7 +1,5 @@
 ---
-import SkillTag from './SkillTag.astro';
-import SkillIcon from './SkillIcon.astro';
-import { skillLinks } from '../lib/skillLinks';
+import TechTags from './TechTags.astro';
 
 interface Props {
   title: string;
@@ -58,11 +56,7 @@ const {
 
   <!-- Collapsed: technology tags -->
   <div class="card-tags">
-    {technologies.map((tech) => (
-      <SkillTag label={tech} href={skillLinks[tech]}>
-        <SkillIcon name={tech} slot="icon" />
-      </SkillTag>
-    ))}
+    <TechTags technologies={technologies} />
   </div>
 
   <!-- Expanded body -->
@@ -79,11 +73,7 @@ const {
     <div class="card-section">
       <p class="section-title">Technologies:</p>
       <div class="card-tags card-tags--expanded">
-        {technologies.map((tech) => (
-          <SkillTag label={tech} href={skillLinks[tech]}>
-            <SkillIcon name={tech} slot="icon" />
-          </SkillTag>
-        ))}
+        <TechTags technologies={technologies} />
       </div>
     </div>
 

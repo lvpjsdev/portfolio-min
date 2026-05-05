@@ -1,0 +1,23 @@
+---
+import SkillTag from './SkillTag.astro';
+import SkillIcon from './SkillIcon.astro';
+import { skillLinks } from '../lib/skillLinks';
+
+interface Props {
+  technologies: string[];
+}
+
+const { technologies } = Astro.props;
+---
+
+{#each technologies as tech}
+  {#if skillLinks[tech]}
+    <SkillTag label={tech} href={skillLinks[tech]}>
+      <SkillIcon name={tech} slot="icon" />
+    </SkillTag>
+  {:else}
+    <SkillTag label={tech}>
+      <SkillIcon name={tech} slot="icon" />
+    </SkillTag>
+  {/if}
+{/each}
