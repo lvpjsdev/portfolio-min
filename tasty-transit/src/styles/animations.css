@@ -1,0 +1,95 @@
+/* Star twinkle animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Meteor fall animation */
+@keyframes fall {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-300px, 300px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* Cloud drift animation */
+@keyframes drift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+  100% { transform: translateX(0); }
+}
+
+/* Base styles for background container */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Night sky layer */
+.night-sky {
+  opacity: 0;
+  transition: opacity var(--duration-slow);
+  background-color: var(--color-background-page);
+}
+
+[data-theme="dark"] .night-sky,
+:root:not([data-theme])[data-theme="dark"] .night-sky {
+  opacity: 1;
+}
+
+/* Day sky layer */
+.day-sky {
+  opacity: 0;
+  transition: opacity var(--duration-slow);
+  background-color: var(--color-sky-day);
+}
+
+[data-theme="light"] .day-sky,
+:root:not([data-theme]) .day-sky {
+  opacity: 1;
+}
+
+/* Star element */
+.star {
+  position: absolute;
+  width: var(--star-size, 2px);
+  height: var(--star-size, 2px);
+  background: var(--color-sky-star);
+  border-radius: 50%;
+  animation: twinkle var(--twinkle-duration, 3s) ease-in-out var(--twinkle-delay, 0s) infinite;
+}
+
+/* Meteor element */
+.meteor {
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: var(--color-sky-meteor);
+  border-radius: 50%;
+  transform: rotate(-45deg);
+  animation: fall var(--fall-duration, 1.5s) linear var(--fall-delay, 0s) infinite;
+  opacity: 0;
+}
+
+/* Cloud element */
+.cloud {
+  position: absolute;
+  width: var(--cloud-width, 120px);
+  height: var(--cloud-height, 50px);
+  background: var(--color-sky-cloud);
+  border-radius: 50%;
+  animation: drift var(--drift-duration, 20s) ease-in-out var(--drift-delay, 0s) infinite;
+  box-shadow: 15px 0 0 10px var(--color-sky-cloud),
+              -15px 5px 0 5px var(--color-sky-cloud),
+              0 10px 0 8px var(--color-sky-cloud);
+}
