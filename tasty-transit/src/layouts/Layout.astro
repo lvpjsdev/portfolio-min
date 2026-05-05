@@ -11,6 +11,10 @@
 	</head>
 	<body>
 		<slot />
+		<nav class="fixed bottom-4 right-4 flex gap-2 z-50">
+			<a href={`/en${Astro.url.pathname.replace(/^\/(en|ru)/, '')}`} class={`px-3 py-1 rounded ${Astro.currentLocale === 'en' ? 'bg-tiger-flame text-white' : 'bg-gray-200'}`}>EN</a>
+			<a href={`/ru${Astro.url.pathname.replace(/^\/(en|ru)/, '')}`} class={`px-3 py-1 rounded ${Astro.currentLocale === 'ru' ? 'bg-tiger-flame text-white' : 'bg-gray-200'}`}>RU</a>
+		</nav>
 	</body>
 </html>
 
