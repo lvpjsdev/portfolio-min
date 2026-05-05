@@ -1,0 +1,105 @@
+---
+// ThemeToggle.astro — standalone component, no props
+---
+
+<button class="theme-toggle" aria-label="Toggle theme" type="button">
+  <!-- Moon icon — shown in dark theme -->
+  <span class="icon-moon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </span>
+  <!-- Sun icon — shown in light theme -->
+  <span class="icon-sun">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+    </svg>
+  </span>
+  <!-- Label — "Dark" in dark theme, "Light" in light theme -->
+  <span class="label-dark">Dark</span>
+  <span class="label-light">Light</span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: var(--border-radius-full);
+    background: var(--color-primitive-twilight-indigo);
+    color: var(--color-primitive-white);
+    font-size: var(--font-size-xs);
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--duration-fast) ease;
+    line-height: 1;
+  }
+
+  .theme-toggle:hover {
+    opacity: 0.85;
+  }
+
+  /* Default state: dark theme active — show moon + "Dark", hide sun + "Light" */
+  .icon-sun,
+  .label-light {
+    display: none;
+  }
+
+  .icon-moon,
+  .label-dark {
+    display: contents;
+  }
+
+  /* When light theme is active — show sun + "Light", hide moon + "Dark" */
+  :global([data-theme="light"]) .icon-sun,
+  :global([data-theme="light"]) .label-light {
+    display: contents;
+  }
+
+  :global([data-theme="light"]) .icon-moon,
+  :global([data-theme="light"]) .label-dark {
+    display: none;
+  }
+</style>
+
+<script>
+  (function () {
+    const btn = document.querySelector('.theme-toggle') as HTMLButtonElement | null;
+    if (!btn) return;
+
+    function getInitialTheme(): 'dark' | 'light' {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || stored === 'light') return stored;
+      } catch (_) {
+        // localStorage unavailable (private browsing, SSR, etc.)
+      }
+      // Fall back to system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+      }
+      return 'dark';
+    }
+
+    function applyTheme(theme: 'dark' | 'light') {
+      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('theme', theme);
+      } catch (_) {
+        // Ignore write errors (private browsing, storage full, etc.)
+      }
+    }
+
+    // Apply theme on load
+    applyTheme(getInitialTheme());
+
+    // Toggle on click
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next: 'dark' | 'light' = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+    });
+  })();
+</script>

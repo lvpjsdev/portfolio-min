@@ -1,0 +1,36 @@
+---
+interface Props {
+  label: string;
+  accent?: boolean;
+}
+
+const { label, accent = false } = Astro.props;
+---
+
+<span class:list={['skill-tag', { 'skill-tag--accent': accent }]}>
+  {label}
+</span>
+
+<style>
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-primitive-twilight-indigo);
+    color: var(--color-primitive-white);
+    font-size: var(--font-size-xs);
+    line-height: 1;
+    white-space: nowrap;
+    transition: opacity var(--duration-fast) ease;
+    cursor: default;
+  }
+
+  .skill-tag:hover {
+    opacity: 0.8;
+  }
+
+  .skill-tag--accent {
+    background-color: var(--color-interactive-primary);
+  }
+</style>

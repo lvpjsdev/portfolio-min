@@ -1,28 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+interface ProjectEntry {
+  title: string;
+  subtitle: string;
+  shortDescription: string;
+  fullDescription: string;
+  technologies: string[];
+  liveUrl?: string;
+  codeUrl?: string;
+}
+
+const projects: ProjectEntry[] = [
+  {
+    title: 'Portfolio Website',
+    subtitle: 'Personal Portfolio',
+    shortDescription: 'A modern portfolio website built with Astro and a custom design system.',
+    fullDescription:
+      'A fully responsive portfolio website built with Astro, featuring a custom design system with CSS tokens, dark/light theme support, and accessible components.',
+    technologies: ['Astro', 'TypeScript', 'CSS', 'Terrazzo'],
+    liveUrl: 'https://example.com',
+    codeUrl: 'https://github.com/example/portfolio',
+  },
+  {
+    title: 'Project Name',
+    subtitle: 'Web Application',
+    shortDescription: 'Description of the project and technologies used.',
+    fullDescription:
+      'A detailed description of the project, its goals, challenges, and outcomes. Built with modern web technologies.',
+    technologies: ['React', 'Node.js', 'PostgreSQL'],
+    codeUrl: 'https://github.com/example/project',
+  },
+];
 ---
 
-<Layout>
-	<div class="flex min-h-screen">
-		<nav class="fixed left-0 top-0 h-full w-16 bg-dark-amethyst flex flex-col items-center justify-center z-50">
-			<div class="space-y-6">
-				<a href="/" class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Home"></a>
-				<a href="/about" class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="About"></a>
-				<a href="/experience" class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Experience"></a>
-				<a href="/projects" class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Projects"></a>
-				<a href="/skills" class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Skills"></a>
-				<a href="/contact" class="block w-3 h-3 rounded-full bg-tiger-flame transition-all hover:scale-150" title="Contact"></a>
-			</div>
-		</nav>
-		
-		<main class="flex-1 pl-16 py-16 pr-8">
-			<h1 class="text-4xl font-bold mb-8 text-white">Projects</h1>
-			<div class="space-y-6">
-				<div class="border border-dark-amethyst rounded-lg p-6 hover:border-tiger-flame transition-all cursor-pointer">
-					<h3 class="text-xl font-bold text-white">Project Name</h3>
-					<p class="text-dusty-denim mt-2">Description of the project and technologies used...</p>
-				</div>
-			</div>
-		</main>
-	</div>
+<Layout currentPage="projects" title="Portfolio — Projects">
+  <section class="page-section">
+    <div class="section-header">
+      <h1 class="section-title">Projects</h1>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-list">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          subtitle={project.subtitle}
+          shortDescription={project.shortDescription}
+          fullDescription={project.fullDescription}
+          technologies={project.technologies}
+          liveUrl={project.liveUrl}
+          codeUrl={project.codeUrl}
+        />
+      ))}
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-section {
+    padding: 4rem 3rem;
+    max-width: 800px;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .section-divider {
+    height: 3px;
+    width: 48px;
+    background-color: var(--color-interactive-primary);
+    border-radius: var(--border-radius-full);
+  }
+
+  .cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>
