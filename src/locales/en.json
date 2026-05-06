@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "experience": "Work Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hej.",
+    "intro": "My name is Leonid. I'm a Web Developer, creating digital experiences."
+  },
+  "about": {
+    "title": "About Me",
+    "bio1": "Hello, world!",
+    "bio2": "I'm a web developer with experience in building modern web applications."
+  },
+  "experience": {
+    "title": "Work Experience"
+  },
+  "projects": {
+    "title": "Projects"
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "contact": {
+    "title": "Contact"
+  }
+}

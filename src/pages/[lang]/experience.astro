@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ExperienceCard from '../../components/ExperienceCard.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ru' } },
+  ];
+}
+
+interface ExperienceEntry {
+  role: string;
+  company: string;
+  dates: string;
+  achievements: string[];
+  isCurrent?: boolean;
+}
+
+const { lang } = Astro.params;
+const isRu = lang === 'ru';
+
+const experiences: ExperienceEntry[] = [
+  {
+    role: isRu ? 'Старший фронтенд-разработчик' : 'Senior Frontend Developer',
+    company: 'Company',
+    dates: isRu ? '2022 — н.в.' : '2022 – Present',
+    isCurrent: true,
+    achievements: isRu 
+      ? ['Руководил разработкой ключевых функций продукта', 'Улучшил производительность на 40%', 'Наставлял младших разработчиков']
+      : ['Led development of key product features', 'Improved performance by 40%', 'Mentored junior developers'],
+  },
+  {
+    role: isRu ? 'Фронтенд-разработчик' : 'Frontend Developer',
+    company: 'Company',
+    dates: isRu ? '2020 – 2022' : '2020 – 2022',
+    achievements: isRu
+      ? ['Создавал адаптивные веб-приложения', 'Сотрудничал с дизайн-командой', 'Внедрил CI/CD пайплайны']
+      : ['Built responsive web applications', 'Collaborated with design team', 'Implemented CI/CD pipelines'],
+  },
+];
+---
+
+<Layout currentPage="experience" title="Portfolio — Work Experience">
+  <section class="page-section">
+    <div class="section-header">
+      <h1 class="section-title">Work Experience</h1>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-list">
+      {experiences.map((exp) => (
+        <ExperienceCard
+          role={exp.role}
+          company={exp.company}
+          dates={exp.dates}
+          achievements={exp.achievements}
+          isCurrent={exp.isCurrent}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 60px 80px;
+    max-width: 800px;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.1;
+  }
+
+  .section-divider {
+    height: 3px;
+    width: 48px;
+    background-color: var(--color-interactive-primary);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+</style>

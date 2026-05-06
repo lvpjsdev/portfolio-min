@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactLink from '../../components/ContactLink.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ru' } },
+  ];
+}
+
+interface ContactEntry {
+  type: 'email' | 'linkedin' | 'github' | 'instagram';
+  label: string;
+  value: string;
+}
+
+const { lang } = Astro.params;
+const isRu = lang === 'ru';
+
+const contacts: ContactEntry[] = [
+  {
+    type: 'email',
+    label: isRu ? 'Email' : 'Email',
+    value: 'hello@example.com',
+  },
+  {
+    type: 'linkedin',
+    label: isRu ? 'LinkedIn' : 'LinkedIn',
+    value: 'https://linkedin.com/in/example',
+  },
+  {
+    type: 'github',
+    label: isRu ? 'GitHub' : 'GitHub',
+    value: 'https://github.com/example',
+  },
+  {
+    type: 'instagram',
+    label: isRu ? 'Instagram' : 'Instagram',
+    value: 'https://instagram.com/example',
+  },
+];
+---
+
+<Layout currentPage="contact" title="Portfolio — Contact">
+  <section class="page-section">
+    <div class="section-header">
+      <h1 class="section-title">Contact</h1>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contacts-list">
+      {contacts.map((contact) => (
+        <ContactLink
+          type={contact.type}
+          label={contact.label}
+          value={contact.value}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 60px 80px;
+    max-width: 600px;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.1;
+  }
+
+  .section-divider {
+    height: 3px;
+    width: 48px;
+    background-color: var(--color-interactive-primary);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+</style>
