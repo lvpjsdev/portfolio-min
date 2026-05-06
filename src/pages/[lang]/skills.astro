@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TechTags from '../../components/TechTags.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ru' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const isRu = lang === 'ru';
+
+interface SkillCategory {
+  name: string;
+  skills: string[];
+}
+
+const skillCategories: SkillCategory[] = [
+  {
+    name: isRu ? 'Веб-технологии' : 'Web Technologies',
+    skills: ['TypeScript', 'React', 'Astro', 'HTML', 'CSS'],
+  },
+  {
+    name: isRu ? 'Бэкенд и инструменты' : 'Backend & Tools',
+    skills: ['Node.js', 'PostgreSQL', 'Git'],
+  },
+  {
+    name: isRu ? 'Дизайн' : 'Design',
+    skills: ['Figma', 'Design Systems', 'CSS Tokens'],
+  },
+];
+---
+---
+
+<Layout currentPage="skills" title="Portfolio — Skills">
+  <section class="page-section">
+    <div class="section-header">
+      <h1 class="section-title">Skills</h1>
+      <div class="section-divider"></div>
+    </div>
+    <div class="categories-list">
+      {skillCategories.map((category) => (
+        <div class="category">
+          <h2 class="category-title">{category.name}</h2>
+          <div class="tags-list">
+            <TechTags technologies={category.skills} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 60px 80px;
+    max-width: 800px;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.1;
+  }
+
+  .section-divider {
+    height: 3px;
+    width: 48px;
+    background-color: var(--color-interactive-primary);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .category-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+</style>

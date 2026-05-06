@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ru' } },
+  ];
+}
+
+interface ProjectEntry {
+  title: string;
+  subtitle: string;
+  shortDescription: string;
+  fullDescription: string;
+  technologies: string[];
+  liveUrl?: string;
+  codeUrl?: string;
+}
+
+const { lang } = Astro.params;
+const isRu = lang === 'ru';
+
+const projects: ProjectEntry[] = [
+  {
+    title: isRu ? 'Сайт-портфолио' : 'Portfolio Website',
+    subtitle: isRu ? 'Персональное портфолио' : 'Personal Portfolio',
+    shortDescription: isRu 
+      ? 'Современный сайт-портфолио на Astro с собственной дизайн-системой.'
+      : 'A modern portfolio website built with Astro and a custom design system.',
+    fullDescription: isRu
+      ? 'Полностью адаптивный сайт-портфолио, созданный на Astro, с дизайн-системой на базе CSS-токенов, поддержкой тёмной/светлой темы и доступных компонентов.'
+      : 'A fully responsive portfolio website built with Astro, featuring a custom design system with CSS tokens, dark/light theme support, and accessible components.',
+    technologies: ['Astro', 'TypeScript', 'CSS', 'Terrazzo'],
+    liveUrl: 'https://example.com',
+    codeUrl: 'https://github.com/example/portfolio',
+  },
+  {
+    title: isRu ? 'Название проекта' : 'Project Name',
+    subtitle: isRu ? 'Веб-приложение' : 'Web Application',
+    shortDescription: isRu
+      ? 'Описание проекта и используемых технологий.'
+      : 'Description of the project and technologies used.',
+    fullDescription: isRu
+      ? 'Подробное описание проекта, его целей, проблем и результатов. Создано с использованием современных веб-технологий.'
+      : 'A detailed description of the project, its goals, challenges, and outcomes. Built with modern web technologies.',
+    technologies: ['React', 'Node.js', 'PostgreSQL'],
+    codeUrl: 'https://github.com/example/project',
+  },
+];
+---
+
+<Layout currentPage="projects" title="Portfolio — Projects">
+  <section class="page-section">
+    <div class="section-header">
+      <h1 class="section-title">Projects</h1>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-list">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          subtitle={project.subtitle}
+          shortDescription={project.shortDescription}
+          fullDescription={project.fullDescription}
+          technologies={project.technologies}
+          liveUrl={project.liveUrl}
+          codeUrl={project.codeUrl}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 60px 80px;
+    max-width: 800px;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.1;
+  }
+
+  .section-divider {
+    height: 3px;
+    width: 48px;
+    background-color: var(--color-interactive-primary);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+</style>

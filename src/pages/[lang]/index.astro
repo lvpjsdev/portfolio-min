@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ru' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const isRu = lang === 'ru';
+---
+
+<Layout currentPage="home" title={isRu ? 'Портфолио — Главная' : 'Portfolio — Home'}>
+  <section class="hero-section">
+    <h1 class="hero-heading">{isRu ? 'Привет.' : 'Hej.'}</h1>
+    <p class="hero-subtitle">
+      {isRu 
+        ? 'Меня зовут Леонид. Я веб-разработчик, создающий цифровые впечатления.'
+        : 'My name is Leonid. I\'m a Web Developer, creating digital experiences.'}
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 80px;
+  }
+
+  .hero-heading {
+    font-size: var(--font-size-7xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+     font-size: 22px;
+     color: var(--color-interactive-secondary);
+     margin: var(--spacing-lg) 0 0 0;
+     max-width: 600px;
+     line-height: 1.4;
+   }
+</style>

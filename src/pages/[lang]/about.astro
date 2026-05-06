@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ru' } },
+  ];
+}
+---
+
+<Layout currentPage="about" title="Portfolio — About Me">
+  <section class="page-section">
+    <div class="section-header">
+      <h1 class="section-title">About Me</h1>
+      <div class="section-divider"></div>
+    </div>
+    <div class="section-content">
+      <p class="bio-text">Hello, world!</p>
+      <p class="bio-text">I'm a web developer with experience in building modern web applications.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 60px 80px;
+    max-width: 800px;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.1;
+  }
+
+  .section-divider {
+    height: 3px;
+    width: 48px;
+    background-color: var(--color-interactive-primary);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .bio-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+</style>
