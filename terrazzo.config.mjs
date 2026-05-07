@@ -5,7 +5,7 @@ export default defineConfig({
   tokens: [
     './tokens/primitives.tokens.json',
     './tokens/semantic.tokens.json',
-    './tokens/design-md.tokens.json',
+    // './tokens/design-md.tokens.json', // Removed - tokens added to primitives.tokens.json
     './tokens/light/tokens.json',
     './tokens/dark/tokens.json',
   ],

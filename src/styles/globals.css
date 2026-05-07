@@ -23,8 +23,93 @@ body {
   --color-primitive-white: rgb(10% 10% 8%);
 }
 
-/* Utility classes */
-.bg-page {
+/* Berkeley Mono Font - Paid font with fallback stack */
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/berkeley-mono.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/berkeley-mono-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/berkeley-mono-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base typography uses Berkeley Mono */
+:root {
+  --font-family-mono: "Berkeley Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
+  
+  /* Typography tokens */
+  --typography-display-xl: 700 38px/1.5 var(--font-family-mono);
+  --typography-heading-md: 700 16px/1.5 var(--font-family-mono);
+  --typography-body-md: 400 16px/1.5 var(--font-family-mono);
+  --typography-body-strong: 500 16px/1.5 var(--font-family-mono);
+  --typography-body-tight: 500 16px/1 var(--font-family-mono);
+  --typography-link-md: 400 16px/1.5 var(--font-family-mono);
+  --typography-button-md: 500 16px/2 var(--font-family-mono);
+  --typography-caption-md: 400 14px/2 var(--font-family-mono);
+}
+
+/* Utility classes for typography */
+.typography-display-xl {
+  font-family: var(--font-family-mono);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.typography-heading-md {
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.typography-body-md {
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.typography-body-strong {
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.typography-button-md {
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.typography-caption-md {
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2;
+}
+
+/* Global styles using design-md tokens */
+body {
+  font-family: var(--font-family-mono);
+}
   background-color: var(--color-background-page);
 }
 
