@@ -23,20 +23,7 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
       <span class="card-company">{company}</span>
       <span class="card-dates">{dates}{isCurrent && <span class="card-current"> · Current</span>}</span>
     </div>
-    <svg
-      class="card-chevron"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
+    <span class="card-ascii-marker" aria-hidden="true">[+]</span>
   </div>
   <div class="card-body" hidden>
     <hr class="card-divider" />
@@ -60,20 +47,16 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
     flex-direction: column;
     gap: 6px;
     padding: 20px 24px;
-    border-radius: var(--border-radius-lg);
+    border-radius: 0px;
+    border: 1px solid rgba(65,71,112,0.3);
     background-color: var(--color-background-surface);
+    color: var(--color-text-primary);
     cursor: pointer;
+    font-family: var(--font-family-sans);
     outline: none;
-    transform: rotate(-0.030175490354247825deg);
-    transition:
-      background-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
+    transition: transform var(--duration-normal) ease;
     position: relative;
     overflow: hidden;
-    /* Depth: multiple shadow layers */
-    box-shadow:
-      0 2px 8px rgba(244, 96, 54, 0.08),
-      0 4px 16px rgba(0, 0, 0, 0.12);
   }
 
   .experience-card::before {
@@ -88,25 +71,23 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
     z-index: 0;
   }
 
+  .experience-card:hover {
+    transform: translateY(-2px);
+  }
+
   .experience-card:hover,
   .experience-card:focus-visible {
     background-color: var(--card-hover-bg);
-    box-shadow:
-      0 4px 12px rgba(244, 96, 54, 0.12),
-      0 8px 24px rgba(0, 0, 0, 0.18);
   }
 
   .experience-card:focus-visible {
-    box-shadow:
-      0 0 0 2px rgba(244, 96, 54, 0.5),
-      0 4px 12px rgba(244, 96, 54, 0.12),
-      0 8px 24px rgba(0, 0, 0, 0.18);
+    outline: 2px solid rgba(244, 96, 54, 0.5);
+    outline-offset: 2px;
   }
 
-  .experience-card:hover .card-chevron,
-  .experience-card:focus-visible .card-chevron {
+  .experience-card:hover .card-ascii-marker,
+  .experience-card:focus-visible .card-ascii-marker {
     color: var(--color-interactive-primary);
-    transform: rotate(90deg);
   }
 
   /* Header row */
@@ -150,14 +131,12 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
   }
 
   /* Chevron */
-  .card-chevron {
+  .card-ascii-marker {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    font-family: var(--font-family-mono);
     color: var(--color-text-secondary);
-    transition:
-      transform var(--duration-fast) ease,
-      color var(--duration-fast) ease;
+    transition: color var(--duration-fast) ease;
+    font-size: var(--font-size-xs);
   }
 
 /* Expanded state */
@@ -239,24 +218,27 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
 <script>
   // Delegated accordion handler — runs once per page load
   (function () {
-    function toggleCard(card: HTMLElement) {
-      const isExpanded = card.getAttribute('aria-expanded') === 'true';
-      const body = card.querySelector<HTMLElement>('.card-body');
+      function toggleCard(card: HTMLElement) {
+        const isExpanded = card.getAttribute('aria-expanded') === 'true';
+        const body = card.querySelector<HTMLElement>('.card-body');
+        const marker = card.querySelector<HTMLElement>('.card-ascii-marker');
 
-      if (!body) return;
+        if (!body) return;
 
-      if (isExpanded) {
-        // Collapse
-        card.setAttribute('aria-expanded', 'false');
-        card.classList.remove('is-expanded');
-        body.setAttribute('hidden', '');
-      } else {
-        // Expand
-        card.setAttribute('aria-expanded', 'true');
-        card.classList.add('is-expanded');
-        body.removeAttribute('hidden');
+        if (isExpanded) {
+          // Collapse
+          card.setAttribute('aria-expanded', 'false');
+          card.classList.remove('is-expanded');
+          body.setAttribute('hidden', '');
+          if (marker) marker.textContent = '[+]';
+        } else {
+          // Expand
+          card.setAttribute('aria-expanded', 'true');
+          card.classList.add('is-expanded');
+          body.removeAttribute('hidden');
+          if (marker) marker.textContent = '[-]';
+        }
       }
-    }
 
     // Click delegation
     document.addEventListener('click', (event: MouseEvent) => {
