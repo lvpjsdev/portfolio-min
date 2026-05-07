@@ -35,20 +35,7 @@ const {
       <span class="card-title">{title}</span>
       <span class="card-subtitle">{subtitle}</span>
     </div>
-    <svg
-      class="card-chevron"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
+  <span class="card-ascii-marker" aria-hidden="true">[+]</span>
   </div>
 
   <!-- Collapsed: short description -->
@@ -119,16 +106,13 @@ const {
     flex-direction: column;
     gap: 16px;
     padding: 20px 24px;
-    border-radius: var(--border-radius-lg);
+    border-radius: 0px;
+    border: 1px solid rgba(65,71,112,0.3);
     background-color: var(--color-background-surface);
     color: var(--color-text-primary);
     cursor: pointer;
     font-family: var(--font-family-sans);
-    /* Depth: multiple shadow layers for brutalism feel */
-    box-shadow: 0 2px 8px rgba(244, 96, 54, 0.08),
-                0 4px 16px rgba(0, 0, 0, 0.15);
-    transition: transform var(--duration-normal) ease,
-                box-shadow var(--duration-normal) ease;
+    transition: transform var(--duration-normal) ease;
     position: relative;
     overflow: hidden;
   }
@@ -147,8 +131,6 @@ const {
 
   .project-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(244, 96, 54, 0.12),
-                0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .project-card:hover,
@@ -157,16 +139,13 @@ const {
   }
 
   .project-card:focus-visible {
-    box-shadow:
-      0 0 0 2px rgba(244, 96, 54, 0.5),
-      0 8px 24px rgba(244, 96, 54, 0.12),
-      0 4px 12px rgba(0, 0, 0, 0.2);
+    outline: 2px solid rgba(244, 96, 54, 0.5);
+    outline-offset: 2px;
   }
 
-  .project-card:hover .card-chevron,
-  .project-card:focus-visible .card-chevron {
+  .project-card:hover .card-ascii-marker,
+  .project-card:focus-visible .card-ascii-marker {
     color: var(--color-interactive-primary);
-    transform: rotate(90deg);
   }
 
   /* Header row */
@@ -200,14 +179,12 @@ const {
   }
 
   /* Chevron */
-  .card-chevron {
+  .card-ascii-marker {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    font-family: var(--font-family-mono);
     color: var(--color-text-secondary);
-    transition:
-      transform var(--duration-fast) ease,
-      color var(--duration-fast) ease;
+    transition: color var(--duration-fast) ease;
+    font-size: var(--font-size-xs);
   }
 
 /* Expanded state */
@@ -281,7 +258,7 @@ const {
      gap: 8px;
      flex: 1;
      padding: 10px 16px;
-     border-radius: var(--border-radius-md);
+     border-radius: 4px;
      font-size: var(--font-size-xs);
      font-weight: var(--font-weight-medium);
      text-decoration: none;
@@ -320,24 +297,27 @@ const {
 <script>
   // Delegated accordion handler for project cards — runs once per page load
   (function () {
-    function toggleCard(card: HTMLElement) {
-      const isExpanded = card.getAttribute('aria-expanded') === 'true';
-      const body = card.querySelector<HTMLElement>('.card-body');
+       function toggleCard(card: HTMLElement) {
+         const isExpanded = card.getAttribute('aria-expanded') === 'true';
+         const body = card.querySelector<HTMLElement>('.card-body');
+         const marker = card.querySelector<HTMLElement>('.card-ascii-marker');
 
-      if (!body) return;
+         if (!body) return;
 
-      if (isExpanded) {
-        // Collapse
-        card.setAttribute('aria-expanded', 'false');
-        card.classList.remove('is-expanded');
-        body.setAttribute('hidden', '');
-      } else {
-        // Expand
-        card.setAttribute('aria-expanded', 'true');
-        card.classList.add('is-expanded');
-        body.removeAttribute('hidden');
-      }
-    }
+         if (isExpanded) {
+           // Collapse
+           card.setAttribute('aria-expanded', 'false');
+           card.classList.remove('is-expanded');
+           body.setAttribute('hidden', '');
+           if (marker) marker.textContent = '[+]';
+         } else {
+           // Expand
+           card.setAttribute('aria-expanded', 'true');
+           card.classList.add('is-expanded');
+           body.removeAttribute('hidden');
+           if (marker) marker.textContent = '[-]';
+         }
+       }
 
     // Click delegation
     document.addEventListener('click', (event: MouseEvent) => {
