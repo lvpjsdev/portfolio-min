@@ -18,17 +18,17 @@
   /* Primary text color (light theme) */
   --color-primitive-black: rgb(0% 0% 0%);
   /* Surface color - cards, sidebar */
-  --color-primitive-dark-amethyst: rgb(22% 13% 28%);
+  --color-primitive-dark-amethyst: rgb(21.569% 13.333% 28.235%);
   /* Secondary accent - subtitles, secondary text */
-  --color-primitive-dusty-denim: rgb(36% 52% 67%);
+  --color-primitive-dusty-denim: rgb(35.686% 52.157% 66.667%);
   /* Dark background - main page background */
-  --color-primitive-midnight-violet: rgb(9% 7% 14%);
+  --color-primitive-midnight-violet: rgb(9.0196% 6.6667% 13.725%);
   /* Secondary text color - descriptions, labels */
-  --color-primitive-silver-mist: rgb(73% 74% 77%);
+  --color-primitive-silver-mist: rgb(73.333% 73.725% 76.863%);
   /* Primary accent - links, highlights, icons */
-  --color-primitive-tiger-flame: rgb(96% 38% 21%);
+  --color-primitive-tiger-flame: rgb(95.686% 37.647% 21.176%);
   /* Tertiary - tags, buttons, dividers */
-  --color-primitive-twilight-indigo: rgb(25% 28% 44%);
+  --color-primitive-twilight-indigo: rgb(25.49% 27.843% 43.922%);
   /* Primary text color (dark theme) */
   --color-primitive-white: rgb(100% 100% 100%);
   --color-text-primary: rgb(100% 100% 100%);
@@ -48,15 +48,69 @@
   --font-weight-bold: 700;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
+  --rounded-full: undefinedundefined;
+  --rounded-none: undefinedundefined;
+  --rounded-sm: undefinedundefined;
   --spacing-2xl: 64px;
   --spacing-3xl: 80px;
   --spacing-4xl: 96px;
   --spacing-5xl: 128px;
   --spacing-component-gap: var(--spacing-md);
   --spacing-component-padding: var(--spacing-lg);
-  --spacing-lg: 24px;
-  --spacing-md: 16px;
-  --spacing-sm: 8px;
-  --spacing-xl: 40px;
-  --spacing-xs: 4px;
+  --spacing-lg: undefinedundefined;
+  --spacing-md: undefinedundefined;
+  --spacing-section: undefinedundefined;
+  --spacing-sm: undefinedundefined;
+  --spacing-xl: undefinedundefined;
+  --spacing-xs: undefinedundefined;
+  --spacing-xxl: undefinedundefined;
+  --spacing-xxs: undefinedundefined;
+  --typography-body-md-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-body-md-font-size: undefinedundefined;
+  --typography-body-md-font-weight: 400;
+  --typography-body-md-line-height: undefinedundefined;
+  --typography-body-md-letter-spacing: undefinedundefined;
+  --typography-body-md: var(--typography-body-md-font-weight) var(--typography-body-md-font-size)/var(--typography-body-md-line-height) var(--typography-body-md-font-family);
+  --typography-body-strong-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-body-strong-font-size: undefinedundefined;
+  --typography-body-strong-font-weight: 500;
+  --typography-body-strong-line-height: undefinedundefined;
+  --typography-body-strong-letter-spacing: undefinedundefined;
+  --typography-body-strong: var(--typography-body-strong-font-weight) var(--typography-body-strong-font-size)/var(--typography-body-strong-line-height) var(--typography-body-strong-font-family);
+  --typography-body-tight-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-body-tight-font-size: undefinedundefined;
+  --typography-body-tight-font-weight: 500;
+  --typography-body-tight-line-height: undefinedundefined;
+  --typography-body-tight-letter-spacing: undefinedundefined;
+  --typography-body-tight: var(--typography-body-tight-font-weight) var(--typography-body-tight-font-size)/var(--typography-body-tight-line-height) var(--typography-body-tight-font-family);
+  --typography-button-md-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-button-md-font-size: undefinedundefined;
+  --typography-button-md-font-weight: 500;
+  --typography-button-md-line-height: undefinedundefined;
+  --typography-button-md-letter-spacing: undefinedundefined;
+  --typography-button-md: var(--typography-button-md-font-weight) var(--typography-button-md-font-size)/var(--typography-button-md-line-height) var(--typography-button-md-font-family);
+  --typography-caption-md-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-caption-md-font-size: undefinedundefined;
+  --typography-caption-md-font-weight: 400;
+  --typography-caption-md-line-height: undefinedundefined;
+  --typography-caption-md-letter-spacing: undefinedundefined;
+  --typography-caption-md: var(--typography-caption-md-font-weight) var(--typography-caption-md-font-size)/var(--typography-caption-md-line-height) var(--typography-caption-md-font-family);
+  --typography-display-xl-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-display-xl-font-size: undefinedundefined;
+  --typography-display-xl-font-weight: 700;
+  --typography-display-xl-line-height: undefinedundefined;
+  --typography-display-xl-letter-spacing: undefinedundefined;
+  --typography-display-xl: var(--typography-display-xl-font-weight) var(--typography-display-xl-font-size)/var(--typography-display-xl-line-height) var(--typography-display-xl-font-family);
+  --typography-heading-md-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-heading-md-font-size: undefinedundefined;
+  --typography-heading-md-font-weight: 700;
+  --typography-heading-md-line-height: undefinedundefined;
+  --typography-heading-md-letter-spacing: undefinedundefined;
+  --typography-heading-md: var(--typography-heading-md-font-weight) var(--typography-heading-md-font-size)/var(--typography-heading-md-line-height) var(--typography-heading-md-font-family);
+  --typography-link-md-font-family: "Berkeley Mono, IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New";
+  --typography-link-md-font-size: undefinedundefined;
+  --typography-link-md-font-weight: 400;
+  --typography-link-md-line-height: undefinedundefined;
+  --typography-link-md-letter-spacing: undefinedundefined;
+  --typography-link-md: var(--typography-link-md-font-weight) var(--typography-link-md-font-size)/var(--typography-link-md-line-height) var(--typography-link-md-font-family);
 }
