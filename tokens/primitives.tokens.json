@@ -55,46 +55,6 @@
     "4xl": { "$value": { "value": 96, "unit": "px" } },
     "5xl": { "$value": { "value": 128, "unit": "px" } }
   },
-  "design-spacing": {
-    "$type": "dimension",
-    "xxs": { "$value": { "value": 1, "unit": "px" } },
-    "xs": { "$value": { "value": 4, "unit": "px" } },
-    "sm": { "$value": { "value": 8, "unit": "px" } },
-    "md": { "$value": { "value": 12, "unit": "px" } },
-    "lg": { "$value": { "value": 16, "unit": "px" } },
-    "xl": { "$value": { "value": 24, "unit": "px" } },
-    "xxl": { "$value": { "value": 32, "unit": "px" } },
-    "section": { "$value": { "value": 96, "unit": "px" } }
-  },
-  "design-rounded": {
-    "$type": "dimension",
-    "none": { "$value": { "value": 0, "unit": "px" } },
-    "sm": { "$value": { "value": 4, "unit": "px" } },
-    "full": { "$value": { "value": 9999, "unit": "px" } }
-  },
-  "fontFamily": {
-    "sans": {
-      "$type": "fontFamily",
-      "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-    }
-  },
-  "fontSize": {
-    "$type": "dimension",
-    "xs": { "$value": { "value": 13, "unit": "px" } },
-    "sm": { "$value": { "value": 14, "unit": "px" } },
-    "base": { "$value": { "value": 16, "unit": "px" } },
-    "lg": { "$value": { "value": 18, "unit": "px" } },
-    "xl": { "$value": { "value": 20, "unit": "px" } },
-    "2xl": { "$value": { "value": 32, "unit": "px" } },
-    "3xl": { "$value": { "value": 48, "unit": "px" } },
-    "7xl": { "$value": { "value": 96, "unit": "px" } }
-  },
-  "fontWeight": {
-    "$type": "fontWeight",
-    "normal": { "$value": 400 },
-    "medium": { "$value": 500 },
-    "bold": { "$value": 700 }
-  },
   "borderRadius": {
     "$type": "dimension",
     "none": { "$value": { "value": 0, "unit": "px" } },
