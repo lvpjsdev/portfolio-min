@@ -109,7 +109,6 @@ body {
 /* Global styles using design-md tokens */
 body {
   font-family: var(--font-family-mono);
-}
   background-color: var(--color-background-page);
 }
 

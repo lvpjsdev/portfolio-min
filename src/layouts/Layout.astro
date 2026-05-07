@@ -118,8 +118,21 @@ const isRu = lang === 'ru';
   }
 
   .main-content {
-    margin-left: 64px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 var(--fontSize-sm, 16px);
     min-height: 100vh;
+  }
+
+  /* 96px section spacing between direct children */
+  .main-content > section,
+  .main-content > div > section {
+    margin-bottom: var(--design-spacing-section, 96px);
+  }
+
+  .main-content > section:last-child,
+  .main-content > div > section:last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: 767px) {
