@@ -68,6 +68,7 @@ const navItems = [
     border-right: 1px solid var(--color-primitive-twilight-indigo);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
     /* Depth: subtle texture overlay */
+    font-family: var(--font-family-mono, "Berkeley Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New");
   }
 
   .sidebar::before {
@@ -97,6 +98,7 @@ const navItems = [
     gap: 20px;
     width: 64px;        /* фиксированная ширина — точки всегда по центру 64px */
     height: 100%;
+    border-bottom: 1px solid rgba(65, 71, 112, 0.3); /* twilight-indigo with alpha */
   }
 
   .sidebar:hover .sidebar__list {
@@ -116,8 +118,10 @@ const navItems = [
     text-decoration: none;
     color: var(--color-primitive-silver-mist);
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-normal);
+    font-family: var(--font-family-mono);
+    font-weight: 500; /* {typography.body-strong} */
     white-space: nowrap;
+    border-radius: var(--design-rounded-sm, 4px);
     transition: color var(--duration-fast) ease;
   }
 
@@ -153,6 +157,7 @@ const navItems = [
   /* ─── Mobile Navbar ───────────────────────────────────────────── */
   .mobile-nav {
     display: none;
+    font-family: var(--font-family-mono, "Berkeley Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New");
   }
 
   @media (max-width: 767px) {
@@ -190,9 +195,10 @@ const navItems = [
       text-decoration: none;
       color: var(--color-text-secondary);
       font-size: var(--font-size-xs);
+      font-family: var(--font-family-mono);
       font-weight: var(--font-weight-medium);
       white-space: nowrap;
-      border-radius: var(--border-radius-sm);
+      border-radius: var(--design-rounded-sm, 4px);
       transition: color var(--duration-fast) ease, background-color var(--duration-fast) ease;
     }
 
