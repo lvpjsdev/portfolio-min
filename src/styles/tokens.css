@@ -65,9 +65,11 @@
   --spacing-5xl: 128px;
   --spacing-component-gap: var(--spacing-md);
   --spacing-component-padding: var(--spacing-lg);
-  --spacing-lg: 24px;
+  --spacing-lg: 16px;
   --spacing-md: 16px;
-  --spacing-sm: 8px;
+  --spacing-none: 0;
+  --spacing-section: 96px;
+  --spacing-sm: 4px;
   --spacing-xl: 40px;
   --spacing-xs: 4px;
 }
