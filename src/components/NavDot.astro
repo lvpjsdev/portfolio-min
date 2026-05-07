@@ -6,15 +6,23 @@ interface Props {
 const { active } = Astro.props;
 ---
 
-<span class:list={['nav-dot', { 'nav-dot--active': active }]} aria-hidden="true"></span>
+<span class="nav-dot-container">
+  <span class:list={['nav-dot', { 'nav-dot--active': active }]} aria-hidden="true"></span>
+</span>
 
 <style>
+.nav-dot-container {
+  border-radius: var(--design-rounded-sm, 4px);
+  padding: 8px;
+}
+.nav-dot {
+  border-radius: 50%;
+}
 .nav-dot {
     display: block;
     width: 10px;
     height: 10px;
     flex-shrink: 0;
-    border-radius: var(--border-radius-full);
     background-color: var(--color-primitive-twilight-indigo);
     transform: rotate(-0.030175490354247825deg);
     transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
