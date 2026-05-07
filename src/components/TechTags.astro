@@ -29,10 +29,15 @@ const tags = technologies.map((tech) => ({
 )}
 </div>
 
-<style>
-  .tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-</style>
+  <style>
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--font-family-mono);
+    }
+
+    .tech-tags, .skill-tag { font-family: var(--font-family-mono); }
+    .tag, .skill-tag { border-radius: var(--design-rounded-sm, 4px); }
+    .skill-tag { font-size: 14px; line-height: 2; }
+  </style>
