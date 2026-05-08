@@ -52,8 +52,6 @@ body {
 
 /* Base typography uses Berkeley Mono */
 :root {
-  --font-family-mono: "Berkeley Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
-  
   /* Typography tokens */
   --typography-display-xl: 700 38px/1.5 var(--font-family-mono);
   --typography-heading-md: 700 16px/1.5 var(--font-family-mono);
