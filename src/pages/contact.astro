@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ContactLink from '../components/ContactLink.astro';
 
 interface ContactEntry {
-  type: 'email' | 'linkedin' | 'github' | 'instagram';
+  type: 'email' | 'linkedin' | 'github' | 'telegram';
   label: string;
   value: string;
 }
@@ -25,9 +25,9 @@ const contacts: ContactEntry[] = [
     value: 'https://github.com/example',
   },
   {
-    type: 'instagram',
-    label: 'Instagram',
-    value: 'https://instagram.com/example',
+    type: 'telegram',
+    label: 'Telegram',
+    value: 'https://t.me/lvpjsdev',
   },
 ];
 ---

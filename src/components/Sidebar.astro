@@ -7,13 +7,19 @@ interface Props {
 
 const { currentPage } = Astro.props;
 
+const pathname = Astro.url?.pathname || '/';
+const lang = pathname.startsWith('/ru') ? 'ru' : 'en';
+const t = lang === 'ru'
+  ? (await import('../locales/ru.json')).default
+  : (await import('../locales/en.json')).default;
+
 const navItems = [
-  { id: 'home',       href: '/',           label: 'Home' },
-  { id: 'about',      href: '/about',      label: 'About Me' },
-  { id: 'experience', href: '/experience', label: 'Work Experience' },
-  { id: 'projects',   href: '/projects',   label: 'Projects' },
-  { id: 'skills',     href: '/skills',     label: 'Skills' },
-  { id: 'contact',    href: '/contact',    label: 'Contact' },
+  { id: 'home',       href: `/${lang}`,           label: t.nav.home },
+  { id: 'about',      href: `/${lang}/about`,      label: t.nav.about },
+  { id: 'experience', href: `/${lang}/experience`, label: t.nav.experience },
+  { id: 'projects',   href: `/${lang}/projects`,   label: t.nav.projects },
+  { id: 'skills',     href: `/${lang}/skills`,     label: t.nav.skills },
+  { id: 'contact',    href: `/${lang}/contact`,    label: t.nav.contact },
 ] as const;
 ---
 
@@ -53,6 +59,38 @@ const navItems = [
   </ul>
 </nav>
 
+<script>
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) {
+    let mouseInside = false;
+
+    sidebar.addEventListener('mouseenter', () => {
+      mouseInside = true;
+      sidebar.classList.add('sidebar--expanded');
+    });
+
+    sidebar.addEventListener('mouseleave', () => {
+      mouseInside = false;
+      sidebar.classList.remove('sidebar--expanded');
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = sidebar.getBoundingClientRect();
+      const isOverSidebar = e.clientX >= rect.left && e.clientX <= rect.right &&
+                            e.clientY >= rect.top  && e.clientY <= rect.bottom;
+
+      if (isOverSidebar !== mouseInside) {
+        mouseInside = isOverSidebar;
+        if (isOverSidebar) {
+          sidebar.classList.add('sidebar--expanded');
+        } else {
+          sidebar.classList.remove('sidebar--expanded');
+        }
+      }
+    });
+  }
+</script>
+
 <style>
   /* ─── Desktop Sidebar ─────────────────────────────────────────── */
   .sidebar {
@@ -67,7 +105,6 @@ const navItems = [
     transition: width var(--duration-normal) ease, box-shadow var(--duration-normal) ease;
     border-right: 1px solid var(--color-primitive-twilight-indigo);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-    /* Depth: subtle texture overlay */
     font-family: var(--font-family-mono);
   }
 
@@ -83,8 +120,9 @@ const navItems = [
     z-index: 0;
   }
 
+  .sidebar--expanded,
   .sidebar:hover {
-    width: 240px;
+    width: 200px;
     box-shadow: 4px 0 32px rgba(244, 96, 54, 0.15), 2px 0 16px rgba(0, 0, 0, 0.5);
   }
 
@@ -96,13 +134,15 @@ const navItems = [
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    width: 64px;        /* фиксированная ширина — точки всегда по центру 64px */
+    width: 64px;
     height: 100%;
-    border-bottom: 1px solid rgba(65, 71, 112, 0.3); /* twilight-indigo with alpha */
+    border-bottom: 1px solid rgba(65, 71, 112, 0.3);
+    transition: padding var(--duration-normal) ease, gap var(--duration-normal) ease;
   }
 
+  .sidebar--expanded .sidebar__list,
   .sidebar:hover .sidebar__list {
-    width: 200px;       /* expanded: ширина контента (240 - 20px padding с каждой стороны) */
+    width: 160px;
     padding: 32px 20px;
     gap: 32px;
   }
@@ -112,21 +152,22 @@ const navItems = [
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;  /* collapsed: точка по центру 64px */
+    justify-content: center;
     gap: 10px;
     padding: 8px 0;
     text-decoration: none;
     color: var(--color-primitive-silver-mist);
     font-size: var(--font-size-sm);
     font-family: var(--font-family-mono);
-    font-weight: 500; /* {typography.body-strong} */
+    font-weight: 500;
     white-space: nowrap;
     border-radius: var(--design-rounded-sm, 4px);
     transition: color var(--duration-fast) ease;
   }
 
+  .sidebar--expanded .sidebar__nav-item,
   .sidebar:hover .sidebar__nav-item {
-    justify-content: flex-start;  /* expanded: по левому краю */
+    justify-content: flex-start;
   }
 
   .sidebar__nav-item--active {
@@ -139,16 +180,16 @@ const navItems = [
     font-weight: var(--font-weight-medium);
   }
 
-  /* Text label — скрыт в collapsed, виден при hover */
   .nav-label {
     width: 0;
     overflow: hidden;
     opacity: 0;
     white-space: nowrap;
-    transition: opacity var(--duration-fast) ease;
+    transition: opacity var(--duration-fast) ease, width var(--duration-normal) ease;
     pointer-events: none;
   }
 
+  .sidebar--expanded .nav-label,
   .sidebar:hover .nav-label {
     width: auto;
     opacity: 1;
