@@ -12,6 +12,7 @@ interface Props {
 
 const { currentPage, title = 'Portfolio', lang = 'en' } = Astro.props;
 const isRu = lang === 'ru';
+const currentPath = Astro.url?.pathname || '/';
 ---
 
 <!doctype html>
@@ -27,16 +28,26 @@ const isRu = lang === 'ru';
     <!-- Theme init script: runs before render to prevent FOUC -->
     <script>
       (function() {
+        // Theme persistence
         try {
           var stored = localStorage.getItem('theme');
           if (stored === 'dark' || stored === 'light') {
             document.documentElement.setAttribute('data-theme', stored);
-            return;
           }
         } catch(_) {}
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        if (!document.documentElement.hasAttribute('data-theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
           document.documentElement.setAttribute('data-theme', 'light');
         }
+        // Language persistence - redirect to stored language if on root path
+        try {
+          var storedLang = localStorage.getItem('lang');
+          var pathParts = window.location.pathname.split('/');
+          // If no language prefix in path and we have stored preference
+          if (storedLang && (pathParts.length < 2 || (pathParts[1] !== 'en' && pathParts[1] !== 'ru'))) {
+            var newPath = '/' + storedLang + window.location.pathname;
+            window.location.replace(newPath);
+          }
+        } catch(_) {}
       })();
     </script>
   </head>
@@ -44,8 +55,8 @@ const isRu = lang === 'ru';
     <Sidebar currentPage={currentPage} />
     <div class="top-controls">
       <div class="lang-toggle-wrapper">
-        <a href="/en" class:list={['lang-toggle', { 'lang-toggle--active': !isRu }]} aria-label="Switch to English">EN</a>
-        <a href="/ru" class:list={['lang-toggle', { 'lang-toggle--active': isRu }]} aria-label="Switch to Russian">RU</a>
+        <a href={isRu ? `/en${currentPath.replace(/^\/ru/, '')}` : currentPath} class:list={['lang-toggle', { 'lang-toggle--active': !isRu }]} aria-label="Switch to English" onclick="localStorage.setItem('lang', 'en')">EN</a>
+        <a href={isRu ? currentPath : `/ru${currentPath}`} class:list={['lang-toggle', { 'lang-toggle--active': isRu }]} aria-label="Switch to Russian" onclick="localStorage.setItem('lang', 'ru')">RU</a>
       </div>
       <div class="theme-toggle-wrapper">
         <ThemeToggle />
