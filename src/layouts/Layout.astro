@@ -14,7 +14,7 @@ const { currentPage, title = 'Portfolio', lang: propLang } = Astro.props;
 const lang = propLang || (Astro.url?.pathname.startsWith('/ru') ? 'ru' : 'en');
 const isRu = lang === 'ru';
 const currentPath = Astro.url?.pathname || '/';
-const cleanPath = currentPath.replace(/^\/ru/, '').replace(/\/$/, '') || '/';
+const cleanPath = currentPath.replace(/^\/(ru|en)/, '').replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
@@ -46,7 +46,7 @@ const cleanPath = currentPath.replace(/^\/ru/, '').replace(/\/$/, '') || '/';
           var pathParts = window.location.pathname.split('/');
           // If no language prefix in path and we have stored preference
           if (storedLang && (pathParts[1] !== 'en' && pathParts[1] !== 'ru')) {
-            var cleanPath = window.location.pathname.replace(/\/$/, '') || '/';
+            var cleanPath = window.location.pathname.replace(/^\/(ru|en)/, '').replace(/\/$/, '') || '/';
             var newPath = '/' + storedLang + cleanPath;
             window.location.replace(newPath);
           }
