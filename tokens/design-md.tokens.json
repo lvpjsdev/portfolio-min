@@ -17,9 +17,9 @@
     "full": { "$value": { "value": 9999, "unit": "px" } }
   },
   "fontFamily": {
-    "sans": {
+    "mono": {
       "$type": "fontFamily",
-      "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      "$value": "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New'"
     }
   },
   "fontSize": {

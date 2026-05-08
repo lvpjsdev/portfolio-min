@@ -23,35 +23,14 @@ body {
   --color-primitive-white: rgb(10% 10% 8%);
 }
 
-/* Berkeley Mono Font - Paid font with fallback stack
- * Font files are not included in the repository (paid license).
- * Fallback stack: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New" */
-@font-face {
-  font-family: 'Berkeley Mono';
-  src: url('/fonts/berkeley-mono.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* IBM Plex Mono Font - Google Fonts
+  * IBM Plex Mono is a monospace font similar to Berkeley Mono.
+  * Fallback stack: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
-@font-face {
-  font-family: 'Berkeley Mono';
-  src: url('/fonts/berkeley-mono-medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Berkeley Mono';
-  src: url('/fonts/berkeley-mono-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Base typography uses Berkeley Mono */
+/* Base typography uses IBM Plex Mono */
 :root {
+  --font-family-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New';
   /* Typography tokens */
   --typography-display-xl: 700 38px/1.5 var(--font-family-mono);
   --typography-heading-md: 700 16px/1.5 var(--font-family-mono);
