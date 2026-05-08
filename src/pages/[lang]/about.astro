@@ -9,7 +9,7 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout currentPage="about" title="Portfolio — About Me">
+<Layout currentPage="about" title="Portfolio — About Me" lang={Astro.params.lang}>
   <section class="page-section">
     <div class="section-header">
       <h1 class="section-title">About Me</h1>

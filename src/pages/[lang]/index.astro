@@ -12,7 +12,7 @@ const { lang } = Astro.params;
 const isRu = lang === 'ru';
 ---
 
-<Layout currentPage="home" title={isRu ? 'Портфолио — Главная' : 'Portfolio — Home'}>
+<Layout currentPage="home" lang={lang} title={isRu ? 'Портфолио — Главная' : 'Portfolio — Home'}>
   <section class="hero-section">
     <h1 class="hero-heading">{isRu ? 'Привет.' : 'Hej.'}</h1>
     <p class="hero-subtitle">
