@@ -45,7 +45,7 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
 
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--spacing-xs);
     padding: 20px 24px;
     border-radius: 0px;
     border: 1px solid rgba(65,71,112,0.3);
@@ -98,13 +98,13 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
      gap: var(--spacing-6);
    }
 
-   /* Info column */
-   .card-info {
-     display: flex;
-     flex-direction: column;
-     gap: 4px;
-     min-width: 0;
-   }
+/* Info column */
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      min-width: 0;
+    }
 
   .card-role {
     font-family: var(--font-family-display);
@@ -169,11 +169,11 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
     }
 
 /* Achievements */
-   .card-achievements {
-     display: flex;
-     flex-direction: column;
-     gap: var(--spacing-12);
-   }
+    .card-achievements {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
 
   .achievements-title {
     font-size: var(--font-size-xs);
@@ -184,7 +184,7 @@ const { role, company, dates, achievements, isCurrent = false } = Astro.props;
 
   .achievement-item {
     display: flex;
-    gap: 8px;
+    gap: var(--spacing-sm);
     align-items: flex-start;
   }
 

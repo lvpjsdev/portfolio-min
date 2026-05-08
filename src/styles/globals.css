@@ -23,7 +23,9 @@ body {
   --color-primitive-white: rgb(10% 10% 8%);
 }
 
-/* Berkeley Mono Font - Paid font with fallback stack */
+/* Berkeley Mono Font - Paid font with fallback stack
+ * Font files are not included in the repository (paid license).
+ * Fallback stack: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New" */
 @font-face {
   font-family: 'Berkeley Mono';
   src: url('/fonts/berkeley-mono.woff2') format('woff2');
@@ -61,6 +63,7 @@ body {
   --typography-link-md: 400 16px/1.5 var(--font-family-mono);
   --typography-button-md: 500 16px/2 var(--font-family-mono);
   --typography-caption-md: 400 14px/2 var(--font-family-mono);
+  --divider-height: 3px;
 }
 
 /* Utility classes for typography */
