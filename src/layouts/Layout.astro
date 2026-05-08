@@ -10,7 +10,8 @@ interface Props {
   lang?: string;
 }
 
-const { currentPage, title = 'Portfolio', lang = 'en' } = Astro.props;
+const { currentPage, title = 'Portfolio', lang: propLang } = Astro.props;
+const lang = propLang || (Astro.url?.pathname.startsWith('/ru') ? 'ru' : 'en');
 const isRu = lang === 'ru';
 const currentPath = Astro.url?.pathname || '/';
 const cleanPath = currentPath.replace(/^\/ru/, '').replace(/\/$/, '') || '/';
