@@ -4,26 +4,27 @@ import SkillIcon from './SkillIcon.astro';
 import { skillLinks } from '../lib/skillLinks';
 
 interface Props {
-  technologies: string[];
+  skills: { name: string; icon?: string }[];
 }
 
-const { technologies } = Astro.props;
+const { skills } = Astro.props;
 
-const tags = technologies.map((tech) => ({
-  tech,
-  href: skillLinks[tech],
+const tags = skills.map((skill) => ({
+  name: skill.name,
+  icon: skill.icon,
+  href: skillLinks[skill.name],
 }));
 ---
 
 <div class="tech-tags">
-{tags.map(({ tech, href }) =>
+{tags.map(({ name, icon, href }) =>
   href ? (
-    <SkillTag label={tech} href={href}>
-      <SkillIcon name={tech} slot="icon" />
+    <SkillTag label={name} href={href}>
+      {icon && <SkillIcon name={name} icon={icon} slot="icon" />}
     </SkillTag>
   ) : (
-    <SkillTag label={tech}>
-      <SkillIcon name={tech} slot="icon" />
+    <SkillTag label={name}>
+      {icon && <SkillIcon name={name} icon={icon} slot="icon" />}
     </SkillTag>
   )
 )}
