@@ -35,7 +35,9 @@ src/
 ## Task 1: Create Content Collections Config
 
 **Files:**
-- Create: `src/content/config.ts`
+- Create: `src/content/config.ts` (moved to `src/content.config.ts` for Astro 6)
+
+**Note:** In Astro 6, the content config must be at `src/content.config.ts` (root), not `src/content/config.ts`. Also requires `loader` with `glob()` pattern.
 
 - [ ] **Step 1: Create src/content/config.ts**
 

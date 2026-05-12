@@ -9,8 +9,8 @@ const projectsCollection = defineCollection({
     shortDescription: z.string(),
     fullDescription: z.string(),
     technologies: z.array(z.string()),
-    liveUrl: z.string().optional(),
-    codeUrl: z.string().optional(),
+    liveUrl: z.string().url().optional(),
+    codeUrl: z.string().url().optional(),
     lang: z.enum(['en', 'ru']),
   }),
 });
