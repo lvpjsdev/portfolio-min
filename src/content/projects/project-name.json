@@ -1,0 +1,9 @@
+{
+  "title": "Project Name",
+  "subtitle": "Web Application",
+  "shortDescription": "Description of the project and technologies used.",
+  "fullDescription": "A detailed description of the project, its goals, challenges, and outcomes. Built with modern web technologies.",
+  "technologies": ["React", "Node.js", "PostgreSQL"],
+  "codeUrl": "https://github.com/example/project",
+  "lang": "en"
+}

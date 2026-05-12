@@ -1,0 +1,10 @@
+{
+  "title": "Сайт-портфолио",
+  "subtitle": "Персональное портфолио",
+  "shortDescription": "Современный сайт-портфолио на Astro с собственной дизайн-системой.",
+  "fullDescription": "Полностью адаптивный сайт-портфолио, созданный на Astro, с дизайн-системой на базе CSS-токенов, поддержкой тёмной/светлой темы и доступных компонентов.",
+  "technologies": ["Astro", "TypeScript", "CSS", "Terrazzo"],
+  "liveUrl": "https://example.com",
+  "codeUrl": "https://github.com/example/portfolio",
+  "lang": "ru"
+}

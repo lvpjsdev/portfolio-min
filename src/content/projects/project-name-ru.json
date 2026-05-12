@@ -1,0 +1,9 @@
+{
+  "title": "Название проекта",
+  "subtitle": "Веб-приложение",
+  "shortDescription": "Описание проекта и используемых технологий.",
+  "fullDescription": "Подробное описание проекта, его целей, проблем и результатов. Создано с использованием современных веб-технологий.",
+  "technologies": ["React", "Node.js", "PostgreSQL"],
+  "codeUrl": "https://github.com/example/project",
+  "lang": "ru"
+}
