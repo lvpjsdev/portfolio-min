@@ -1,0 +1,12 @@
+{
+  "role": "Senior Frontend Developer",
+  "company": "Company",
+  "dates": "2022 – Present",
+  "isCurrent": true,
+  "achievements": [
+    "Led development of key product features",
+    "Improved performance by 40%",
+    "Mentored junior developers"
+  ],
+  "lang": "en"
+}
