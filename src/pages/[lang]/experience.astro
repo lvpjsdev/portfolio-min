@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ExperienceCard from '../../components/ExperienceCard.astro';
+import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
   return [
@@ -9,36 +10,9 @@ export function getStaticPaths() {
   ];
 }
 
-interface ExperienceEntry {
-  role: string;
-  company: string;
-  dates: string;
-  achievements: string[];
-  isCurrent?: boolean;
-}
-
 const { lang } = Astro.params;
-const isRu = lang === 'ru';
-
-const experiences: ExperienceEntry[] = [
-  {
-    role: isRu ? 'Старший фронтенд-разработчик' : 'Senior Frontend Developer',
-    company: 'Company',
-    dates: isRu ? '2022 — н.в.' : '2022 – Present',
-    isCurrent: true,
-    achievements: isRu 
-      ? ['Руководил разработкой ключевых функций продукта', 'Улучшил производительность на 40%', 'Наставлял младших разработчиков']
-      : ['Led development of key product features', 'Improved performance by 40%', 'Mentored junior developers'],
-  },
-  {
-    role: isRu ? 'Фронтенд-разработчик' : 'Frontend Developer',
-    company: 'Company',
-    dates: isRu ? '2020 – 2022' : '2020 – 2022',
-    achievements: isRu
-      ? ['Создавал адаптивные веб-приложения', 'Сотрудничал с дизайн-командой', 'Внедрил CI/CD пайплайны']
-      : ['Built responsive web applications', 'Collaborated with design team', 'Implemented CI/CD pipelines'],
-  },
-];
+const allExperience = await getCollection('experience');
+const experiences = allExperience.filter(e => e.data.lang === lang);
 ---
 
 <Layout currentPage="experience" lang={lang} title="Portfolio — Work Experience">
@@ -50,11 +24,11 @@ const experiences: ExperienceEntry[] = [
     <div class="cards-list">
       {experiences.map((exp) => (
         <ExperienceCard
-          role={exp.role}
-          company={exp.company}
-          dates={exp.dates}
-          achievements={exp.achievements}
-          isCurrent={exp.isCurrent}
+          role={exp.data.role}
+          company={exp.data.company}
+          dates={exp.data.dates}
+          achievements={exp.data.achievements}
+          isCurrent={exp.data.isCurrent}
         />
       ))}
     </div>
