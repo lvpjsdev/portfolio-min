@@ -1,0 +1,10 @@
+{
+  "title": "Portfolio Website",
+  "subtitle": "Personal Portfolio",
+  "shortDescription": "A modern portfolio website built with Astro and a custom design system.",
+  "fullDescription": "A fully responsive portfolio website built with Astro, featuring a custom design system with CSS tokens, dark/light theme support, and accessible components.",
+  "technologies": ["Astro", "TypeScript", "CSS", "Terrazzo"],
+  "liveUrl": "https://example.com",
+  "codeUrl": "https://github.com/example/portfolio",
+  "lang": "en"
+}

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
   return [
@@ -9,46 +10,9 @@ export function getStaticPaths() {
   ];
 }
 
-interface ProjectEntry {
-  title: string;
-  subtitle: string;
-  shortDescription: string;
-  fullDescription: string;
-  technologies: string[];
-  liveUrl?: string;
-  codeUrl?: string;
-}
-
 const { lang } = Astro.params;
-const isRu = lang === 'ru';
-
-const projects: ProjectEntry[] = [
-  {
-    title: isRu ? 'Сайт-портфолио' : 'Portfolio Website',
-    subtitle: isRu ? 'Персональное портфолио' : 'Personal Portfolio',
-    shortDescription: isRu 
-      ? 'Современный сайт-портфолио на Astro с собственной дизайн-системой.'
-      : 'A modern portfolio website built with Astro and a custom design system.',
-    fullDescription: isRu
-      ? 'Полностью адаптивный сайт-портфолио, созданный на Astro, с дизайн-системой на базе CSS-токенов, поддержкой тёмной/светлой темы и доступных компонентов.'
-      : 'A fully responsive portfolio website built with Astro, featuring a custom design system with CSS tokens, dark/light theme support, and accessible components.',
-    technologies: ['Astro', 'TypeScript', 'CSS', 'Terrazzo'],
-    liveUrl: 'https://example.com',
-    codeUrl: 'https://github.com/example/portfolio',
-  },
-  {
-    title: isRu ? 'Название проекта' : 'Project Name',
-    subtitle: isRu ? 'Веб-приложение' : 'Web Application',
-    shortDescription: isRu
-      ? 'Описание проекта и используемых технологий.'
-      : 'Description of the project and technologies used.',
-    fullDescription: isRu
-      ? 'Подробное описание проекта, его целей, проблем и результатов. Создано с использованием современных веб-технологий.'
-      : 'A detailed description of the project, its goals, challenges, and outcomes. Built with modern web technologies.',
-    technologies: ['React', 'Node.js', 'PostgreSQL'],
-    codeUrl: 'https://github.com/example/project',
-  },
-];
+const allProjects = await getCollection('projects');
+const projects = allProjects.filter(p => p.data.lang === lang);
 ---
 
 <Layout currentPage="projects" lang={lang} title="Portfolio — Projects">
@@ -60,13 +24,13 @@ const projects: ProjectEntry[] = [
     <div class="cards-list">
       {projects.map((project) => (
         <ProjectCard
-          title={project.title}
-          subtitle={project.subtitle}
-          shortDescription={project.shortDescription}
-          fullDescription={project.fullDescription}
-          technologies={project.technologies}
-          liveUrl={project.liveUrl}
-          codeUrl={project.codeUrl}
+          title={project.data.title}
+          subtitle={project.data.subtitle}
+          shortDescription={project.data.shortDescription}
+          fullDescription={project.data.fullDescription}
+          technologies={project.data.technologies}
+          liveUrl={project.data.liveUrl}
+          codeUrl={project.data.codeUrl}
         />
       ))}
     </div>

@@ -1,38 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
 
-interface ProjectEntry {
-  title: string;
-  subtitle: string;
-  shortDescription: string;
-  fullDescription: string;
-  technologies: string[];
-  liveUrl?: string;
-  codeUrl?: string;
-}
-
-const projects: ProjectEntry[] = [
-  {
-    title: 'Portfolio Website',
-    subtitle: 'Personal Portfolio',
-    shortDescription: 'A modern portfolio website built with Astro and a custom design system.',
-    fullDescription:
-      'A fully responsive portfolio website built with Astro, featuring a custom design system with CSS tokens, dark/light theme support, and accessible components.',
-    technologies: ['Astro', 'TypeScript', 'CSS', 'Terrazzo'],
-    liveUrl: 'https://example.com',
-    codeUrl: 'https://github.com/example/portfolio',
-  },
-  {
-    title: 'Project Name',
-    subtitle: 'Web Application',
-    shortDescription: 'Description of the project and technologies used.',
-    fullDescription:
-      'A detailed description of the project, its goals, challenges, and outcomes. Built with modern web technologies.',
-    technologies: ['React', 'Node.js', 'PostgreSQL'],
-    codeUrl: 'https://github.com/example/project',
-  },
-];
+const projects = await getCollection('projects');
 ---
 
 <Layout currentPage="projects" title="Portfolio — Projects">
@@ -44,13 +15,13 @@ const projects: ProjectEntry[] = [
     <div class="cards-list">
       {projects.map((project) => (
         <ProjectCard
-          title={project.title}
-          subtitle={project.subtitle}
-          shortDescription={project.shortDescription}
-          fullDescription={project.fullDescription}
-          technologies={project.technologies}
-          liveUrl={project.liveUrl}
-          codeUrl={project.codeUrl}
+          title={project.data.title}
+          subtitle={project.data.subtitle}
+          shortDescription={project.data.shortDescription}
+          fullDescription={project.data.fullDescription}
+          technologies={project.data.technologies}
+          liveUrl={project.data.liveUrl}
+          codeUrl={project.data.codeUrl}
         />
       ))}
     </div>

@@ -1,0 +1,11 @@
+{
+  "role": "Frontend Developer",
+  "company": "Company",
+  "dates": "2020 – 2022",
+  "achievements": [
+    "Built responsive web applications",
+    "Collaborated with design team",
+    "Implemented CI/CD pipelines"
+  ],
+  "lang": "en"
+}

@@ -1,26 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TechTags from '../components/TechTags.astro';
+import { getCollection } from 'astro:content';
 
-interface SkillCategory {
-  name: string;
-  skills: string[];
-}
+const allSkills = await getCollection('skills');
 
-const skillCategories: SkillCategory[] = [
-  {
-    name: 'Web Technologies',
-    skills: ['TypeScript', 'React', 'Astro', 'HTML', 'CSS'],
-  },
-  {
-    name: 'Backend & Tools',
-    skills: ['Node.js', 'PostgreSQL', 'Git'],
-  },
-  {
-    name: 'Design',
-    skills: ['Figma', 'Design Systems', 'CSS Tokens'],
-  },
-];
+// Group skills by category
+const skillsByCategory = allSkills.reduce((acc, skill) => {
+  const category = skill.data.category;
+  if (!acc[category]) {
+    acc[category] = [];
+  }
+  acc[category].push(skill.data.name);
+  return acc;
+}, {} as Record<string, string[]>);
+
+const skillCategories = Object.entries(skillsByCategory).map(([name, skills]) => ({
+  name,
+  skills,
+}));
 ---
 ---
 

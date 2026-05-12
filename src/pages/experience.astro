@@ -1,38 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ExperienceCard from '../components/ExperienceCard.astro';
+import { getCollection } from 'astro:content';
 
-interface ExperienceEntry {
-  role: string;
-  company: string;
-  dates: string;
-  achievements: string[];
-  isCurrent?: boolean;
-}
-
-const experiences: ExperienceEntry[] = [
-  {
-    role: 'Senior Frontend Developer',
-    company: 'Company',
-    dates: '2022 – Present',
-    isCurrent: true,
-    achievements: [
-      'Led development of key product features',
-      'Improved performance by 40%',
-      'Mentored junior developers',
-    ],
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'Company',
-    dates: '2020 – 2022',
-    achievements: [
-      'Built responsive web applications',
-      'Collaborated with design team',
-      'Implemented CI/CD pipelines',
-    ],
-  },
-];
+const experiences = await getCollection('experience');
 ---
 
 <Layout currentPage="experience" title="Portfolio — Work Experience">
@@ -44,11 +15,11 @@ const experiences: ExperienceEntry[] = [
     <div class="cards-list">
       {experiences.map((exp) => (
         <ExperienceCard
-          role={exp.role}
-          company={exp.company}
-          dates={exp.dates}
-          achievements={exp.achievements}
-          isCurrent={exp.isCurrent}
+          role={exp.data.role}
+          company={exp.data.company}
+          dates={exp.data.dates}
+          achievements={exp.data.achievements}
+          isCurrent={exp.data.isCurrent}
         />
       ))}
     </div>
