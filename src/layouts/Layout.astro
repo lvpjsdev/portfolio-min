@@ -54,7 +54,7 @@ const cleanPath = currentPath.replace(/^\/(ru|en)/, '').replace(/\/$/, '') || '/
     </script>
   </head>
   <body>
-    <Sidebar currentPage={currentPage} />
+    <Sidebar currentPage={currentPage} lang={lang} />
     <div class="top-controls">
       <div class="lang-toggle-wrapper">
         <a href={isRu ? `/en${cleanPath}` : cleanPath} class:list={['lang-toggle', { 'lang-toggle--active': !isRu }]} aria-label="Switch to English" onclick="localStorage.setItem('lang', 'en')">EN</a>
