@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { t } from '../../lib/i18n';
 import TechTags from '../../components/TechTags.astro';
 import { getCollection } from 'astro:content';
 
@@ -31,10 +32,10 @@ const skillCategories = Object.entries(skillsByCategory).map(([name, skills]) =>
 ---
 ---
 
-<Layout currentPage="skills" lang={lang} title="Portfolio — Skills">
+<Layout currentPage="skills" lang={lang} title={t(lang, 'skills.title')}>
   <section class="page-section">
     <div class="section-header">
-      <h1 class="section-title">Skills</h1>
+      <h1 class="section-title">{t(lang, 'skills.heading')}</h1>
       <div class="section-divider"></div>
     </div>
     <div class="categories-list">

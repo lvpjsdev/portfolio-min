@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { t } from '../../lib/i18n';
 
 export function getStaticPaths() {
   return [
@@ -9,17 +10,12 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const isRu = lang === 'ru';
 ---
 
-<Layout currentPage="home" lang={lang} title={isRu ? 'Портфолио — Главная' : 'Portfolio — Home'}>
+<Layout currentPage="home" lang={lang} title={t(lang, 'home.title')}>
   <section class="hero-section">
-    <h1 class="hero-heading">{isRu ? 'Привет.' : 'Hej.'}</h1>
-    <p class="hero-subtitle">
-      {isRu 
-        ? 'Меня зовут Леонид. Я веб-разработчик, создающий цифровые впечатления.'
-        : 'My name is Leonid. I\'m a Web Developer, creating digital experiences.'}
-    </p>
+    <h1 class="hero-heading">{t(lang, 'home.greeting')}</h1>
+    <p class="hero-subtitle">{t(lang, 'home.intro')}</p>
   </section>
 </Layout>
 

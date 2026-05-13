@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { t } from '../../lib/i18n';
 import ExperienceCard from '../../components/ExperienceCard.astro';
 import { getCollection } from 'astro:content';
 
@@ -15,10 +16,10 @@ const allExperience = await getCollection('experience');
 const experiences = allExperience.filter(e => e.data.lang === lang);
 ---
 
-<Layout currentPage="experience" lang={lang} title="Portfolio — Work Experience">
+<Layout currentPage="experience" lang={lang} title={t(lang, 'experience.title')}>
   <section class="page-section">
     <div class="section-header">
-      <h1 class="section-title">Work Experience</h1>
+      <h1 class="section-title">{t(lang, 'experience.heading')}</h1>
       <div class="section-divider"></div>
     </div>
     <div class="cards-list">
