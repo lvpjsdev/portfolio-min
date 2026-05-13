@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { t } from '../../lib/i18n';
 
 export function getStaticPaths() {
   return [
@@ -7,17 +8,19 @@ export function getStaticPaths() {
     { params: { lang: 'ru' } },
   ];
 }
+
+const { lang } = Astro.params;
 ---
 
-<Layout currentPage="about" title="Portfolio — About Me" lang={Astro.params.lang}>
+<Layout currentPage="about" title={t(lang, 'about.title')} lang={lang}>
   <section class="page-section">
     <div class="section-header">
-      <h1 class="section-title">About Me</h1>
+      <h1 class="section-title">{t(lang, 'about.heading')}</h1>
       <div class="section-divider"></div>
     </div>
     <div class="section-content">
-      <p class="bio-text">Hello, world!</p>
-      <p class="bio-text">I'm a web developer with experience in building modern web applications.</p>
+      <p class="bio-text">{t(lang, 'about.bio1')}</p>
+      <p class="bio-text">{t(lang, 'about.bio2')}</p>
     </div>
   </section>
 </Layout>

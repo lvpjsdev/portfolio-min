@@ -1,35 +1,39 @@
 ---
+import { t } from '../lib/i18n';
 import NavDot from './NavDot.astro';
 
 interface Props {
   currentPage: 'home' | 'about' | 'experience' | 'projects' | 'skills' | 'contact';
+  lang: string;
 }
 
-const { currentPage } = Astro.props;
+const { currentPage, lang } = Astro.props;
+
+const localizeHref = (href: string) => href === '/' ? `/${lang}` : `/${lang}${href}`;
 
 const navItems = [
-  { id: 'home',       href: '/',           label: 'Home' },
-  { id: 'about',      href: '/about',      label: 'About Me' },
-  { id: 'experience', href: '/experience', label: 'Work Experience' },
-  { id: 'projects',   href: '/projects',   label: 'Projects' },
-  { id: 'skills',     href: '/skills',     label: 'Skills' },
-  { id: 'contact',    href: '/contact',    label: 'Contact' },
+  { id: 'home',       href: '/' },
+  { id: 'about',      href: '/about' },
+  { id: 'experience', href: '/experience' },
+  { id: 'projects',   href: '/projects' },
+  { id: 'skills',     href: '/skills' },
+  { id: 'contact',    href: '/contact' },
 ] as const;
 ---
 
 <!-- Desktop sidebar (≥ 768px) -->
-<nav class="sidebar" aria-label="Main navigation" data-page={currentPage}>
+<nav class="sidebar" aria-label={t(lang, 'nav.aria_main')} data-page={currentPage}>
   <ul class="sidebar__list" role="list">
     {navItems.map((item) => (
       <li>
 <a
-           href={item.href}
+           href={localizeHref(item.href)}
            class:list={['sidebar__nav-item', { 'sidebar__nav-item--active': currentPage === item.id }]}
            aria-current={currentPage === item.id ? 'page' : undefined}
-           aria-label={item.label}
+           aria-label={t(lang, 'nav.' + item.id)}
          >
            <NavDot active={currentPage === item.id} />
-           <span class="nav-label">{item.label}</span>
+           <span class="nav-label">{t(lang, 'nav.' + item.id)}</span>
          </a>
       </li>
     ))}
@@ -37,16 +41,16 @@ const navItems = [
 </nav>
 
 <!-- Mobile top navbar (< 768px) -->
-<nav class="mobile-nav" aria-label="Mobile navigation">
+<nav class="mobile-nav" aria-label={t(lang, 'nav.aria_mobile')}>
   <ul class="mobile-nav__list" role="list">
     {navItems.map((item) => (
       <li>
         <a
-          href={item.href}
+          href={localizeHref(item.href)}
           class:list={['mobile-nav__link', { 'mobile-nav__link--active': currentPage === item.id }]}
           aria-current={currentPage === item.id ? 'page' : undefined}
         >
-          {item.label}
+          {t(lang, 'nav.' + item.id)}
         </a>
       </li>
     ))}

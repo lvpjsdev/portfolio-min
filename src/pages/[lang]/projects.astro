@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { t } from '../../lib/i18n';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
@@ -15,10 +16,10 @@ const allProjects = await getCollection('projects');
 const projects = allProjects.filter(p => p.data.lang === lang);
 ---
 
-<Layout currentPage="projects" lang={lang} title="Portfolio — Projects">
+<Layout currentPage="projects" lang={lang} title={t(lang, 'projects.title')}>
   <section class="page-section">
     <div class="section-header">
-      <h1 class="section-title">Projects</h1>
+      <h1 class="section-title">{t(lang, 'projects.heading')}</h1>
       <div class="section-divider"></div>
     </div>
     <div class="cards-list">

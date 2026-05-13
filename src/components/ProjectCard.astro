@@ -43,7 +43,7 @@ const {
 
   <!-- Collapsed: technology tags -->
   <div class="card-tags">
-    <TechTags technologies={technologies} />
+    <TechTags skills={technologies.map(t => ({ name: t }))} />
   </div>
 
   <!-- Expanded body -->
@@ -60,7 +60,7 @@ const {
     <div class="card-section">
       <p class="section-title">Technologies:</p>
       <div class="card-tags card-tags--expanded">
-        <TechTags technologies={technologies} />
+        <TechTags skills={technologies.map(t => ({ name: t }))} />
       </div>
     </div>
 

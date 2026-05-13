@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { t } from '../../lib/i18n';
 import ContactLink from '../../components/ContactLink.astro';
 
 export function getStaticPaths() {
@@ -16,36 +17,42 @@ interface ContactEntry {
 }
 
 const { lang } = Astro.params;
-const isRu = lang === 'ru';
+
+const contactLabels: Record<'email' | 'linkedin' | 'github' | 'instagram', string> = {
+  email: t(lang, 'contact.email'),
+  linkedin: t(lang, 'contact.linkedin'),
+  github: t(lang, 'contact.github'),
+  instagram: t(lang, 'contact.instagram'),
+};
 
 const contacts: ContactEntry[] = [
   {
     type: 'email',
-    label: isRu ? 'Email' : 'Email',
+    label: contactLabels.email,
     value: 'hello@example.com',
   },
   {
     type: 'linkedin',
-    label: isRu ? 'LinkedIn' : 'LinkedIn',
+    label: contactLabels.linkedin,
     value: 'https://linkedin.com/in/example',
   },
   {
     type: 'github',
-    label: isRu ? 'GitHub' : 'GitHub',
+    label: contactLabels.github,
     value: 'https://github.com/example',
   },
   {
     type: 'instagram',
-    label: isRu ? 'Instagram' : 'Instagram',
+    label: contactLabels.instagram,
     value: 'https://instagram.com/example',
   },
 ];
 ---
 
-<Layout currentPage="contact" title="Portfolio — Contact" lang={lang}>
+<Layout currentPage="contact" title={t(lang, 'contact.title')} lang={lang}>
   <section class="page-section">
     <div class="section-header">
-      <h1 class="section-title">Contact</h1>
+      <h1 class="section-title">{t(lang, 'contact.heading')}</h1>
       <div class="section-divider"></div>
     </div>
     <div class="contacts-list">
