@@ -21,9 +21,9 @@ const skillsByCategory = filteredSkills.reduce((acc, skill) => {
   if (!acc[category]) {
     acc[category] = [];
   }
-  acc[category].push(skill.data.name);
+  acc[category].push({ name: skill.data.name, icon: skill.data.icon });
   return acc;
-}, {} as Record<string, string[]>);
+}, {} as Record<string, { name: string; icon?: string }[]>);
 
 const skillCategories = Object.entries(skillsByCategory).map(([name, skills]) => ({
   name,
@@ -43,7 +43,7 @@ const skillCategories = Object.entries(skillsByCategory).map(([name, skills]) =>
         <div class="category">
           <h2 class="category-title">{category.name}</h2>
           <div class="tags-list">
-            <TechTags technologies={category.skills} />
+            <TechTags skills={category.skills} />
           </div>
         </div>
       ))}
